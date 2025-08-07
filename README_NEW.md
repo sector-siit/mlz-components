@@ -70,13 +70,11 @@ function App() {
 
 ## 📚 Documentación
 
-- � **[Quick Start: Commits](./QUICK_START.md)** - Guía rápida para usar conventional commits
-- �📖 **[Guía de Componentes](./docs/COMPONENTS.md)** - Documentación completa de todos los componentes
+- 📖 **[Guía de Componentes](./docs/COMPONENTS.md)** - Documentación completa de todos los componentes
 - 🎨 **[Personalización](./docs/CUSTOMIZATION.md)** - Variables CSS y temas personalizados
 - 🛠️ **[Guía de Desarrollo](./docs/DEVELOPER.md)** - Información para contribuidores
 - 🚀 **[CI/CD](./docs/CI-CD.md)** - Sistema de deployments automatizados
 - 📊 **[Sistema de Badges](./docs/BADGES.md)** - Información sobre badges y estados
-- 📝 **[Conventional Commits](./docs/CONVENTIONAL_COMMITS.md)** - Formato de commits y versionado automático
 
 ## 🎨 Personalización Rápida
 
@@ -157,59 +155,13 @@ Ver [documentación completa de CI/CD](./docs/CI-CD.md) para más detalles.
 
 MIT
 
-## 🚀 Release Process
-
-### 📦 Stable Releases (main branch)
-Cuando haces push a `main` con una nueva versión en `package.json`:
-1. **Publicación automática** a NPM como `@sector.siit/mlz-components`
-2. **GitHub Release** creado con tag (`v1.0.0`, `v1.0.1`, etc.)
-3. **Storybook** desplegado a GitHub Pages
-4. **Release notes** generadas automáticamente
-
-### 🧪 Release Candidates (develop branch)
-Cuando haces push a `develop`:
-1. **Release Candidate** creado con timestamp (`v1.0.0-rc.202408071234`)
-2. **Artifacts incluidos**: dist files + Storybook build
-3. **Pre-release** marcado para testing
-4. **NO se publica** a NPM (solo para testing)
-
-### 🔄 Workflow de desarrollo:
-```bash
-# Para nuevas features
-git checkout develop
-# ... desarrolla tu feature ...
-git push origin develop  # ✨ Crea RC automáticamente
-
-# Para release estable
-git checkout main
-git merge develop
-# Actualiza version en package.json
-git push origin main     # 🚀 Publica a NPM + GitHub Release
-```
-
 ## 🤝 Contribuir
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Haz commits usando [Conventional Commits](./docs/CONVENTIONAL_COMMITS.md) (`git commit -m 'feat: add some AmazingFeature'`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
-
-### 📝 Commits
-
-Este proyecto usa **Conventional Commits** para versionado automático:
-
-```bash
-# Usar el asistente interactivo (recomendado)
-bun run commit
-
-# O formato manual
-git commit -m "feat: add new component"
-git commit -m "fix: resolve button issue"
-git commit -m "docs: update README"
-```
-
-Ver la [guía completa de Conventional Commits](./docs/CONVENTIONAL_COMMITS.md) para más detalles.
 
 ### 📋 Guías de Contribución
 

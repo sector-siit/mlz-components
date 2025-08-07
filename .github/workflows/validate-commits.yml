@@ -1,0 +1,159 @@
+name: Validate Commit Messages
+
+on:
+  workflow_call:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - develop
+      - main
+
+jobs:
+  validate-commits:
+    name: Validate Commit Messages
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 'latest'
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Validate current commit (push)
+        if: github.event_name == 'push'
+        run: echo "${{ github.event.head_commit.message }}" | bun exec commitlint
+
+      - name: Validate PR commits
+        if: github.event_name == 'pull_request'
+        run: bun exec commitlint --from=${{ github.event.pull_request.base.sha }} --to=${{ github.event.pull_request.head.sha }} --verbose
+
+      - name: Comment on PR if validation fails
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const comment = `## ❌ Commit Message Validation Failed
+
+            Your commit messages don't follow the [Conventional Commits](https://www.conventionalcommits.org/) specification.
+
+            ### Required Format:
+            \`\`\`
+            <type>[optional scope]: <description>
+
+            [optional body]
+
+            [optional footer(s)]
+            \`\`\`
+
+            ### Valid Types:
+            - \`feat\`: New feature
+            - \`fix\`: Bug fix
+            - \`docs\`: Documentation changes
+            - \`style\`: Code style changes (formatting, semicolons, etc)
+            - \`refactor\`: Code refactoring
+            - \`perf\`: Performance improvements
+            - \`test\`: Adding or updating tests
+            - \`chore\`: Build process or auxiliary tool changes
+            - \`ci\`: CI/CD changes
+
+            ### Examples:
+            - \`feat: add DateTimeRange component\`
+            - \`fix: resolve button click handler issue\`
+            - \`docs: update README with new installation instructions\`
+            - \`feat(input): add validation support\`
+
+            ### Breaking Changes:
+            - Add \`BREAKING CHANGE:\` in the footer for major version bumps
+            - Or use \`!\` after the type: \`feat!: remove deprecated API\`
+
+            Please fix your commit messages and push again.`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+  semantic-check:
+    name: Check if commit triggers release
+    runs-on: ubuntu-latest
+    needs: validate-commits
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+    
+    outputs:
+      should-release: ${{ steps.semantic-check.outputs.should-release }}
+      next-version: ${{ steps.semantic-check.outputs.next-version }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 'latest'
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Check for release
+        id: semantic-check
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Dry run de semantic release para ver si hay cambios que triggeren release
+          output=$(bun exec semantic-release --dry-run --no-ci 2>&1) || true
+          echo "Semantic Release Output:"
+          echo "$output"
+          
+          if echo "$output" | grep -q "The next release version is"; then
+            version=$(echo "$output" | grep "The next release version is" | sed 's/.*The next release version is \([0-9]\+\.[0-9]\+\.[0-9]\+.*\).*/\1/')
+            echo "should-release=true" >> $GITHUB_OUTPUT
+            echo "next-version=$version" >> $GITHUB_OUTPUT
+            echo "🚀 Release will be triggered for version: $version"
+          else
+            echo "should-release=false" >> $GITHUB_OUTPUT
+            echo "⏭️ No release will be triggered"
+          fi
+
+      - name: Comment release info on PR
+        if: github.event_name == 'pull_request' && steps.semantic-check.outputs.should-release == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const nextVersion = '${{ steps.semantic-check.outputs.next-version }}';
+            const branch = '${{ github.head_ref }}';
+            const comment = `## 🚀 Release Preview
+
+            This PR will trigger a **${branch === 'main' ? 'Production' : 'Release Candidate'}** release when merged:
+
+            **Next Version:** \`${nextVersion}\`
+            **Branch:** \`${branch}\`
+            **Type:** ${branch === 'main' ? '📦 Stable Release' : '🧪 Release Candidate'}
+
+            The release will include:
+            - 📦 NPM package publication
+            - 📚 Storybook deployment
+            - 📋 GitHub release with changelog
+            - 🏷️ Git tag
+
+            Make sure all changes are ready for release!`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });

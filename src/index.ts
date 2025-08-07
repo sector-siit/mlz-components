@@ -2,8 +2,6 @@
 import './styles.css';
 
 // Exportar componentes
-export { Button } from './components/Button';
-export type { ButtonProps } from './components/Button';
-
-export { Input } from './components/Input';
-export type { InputProps } from './components/Input';
+export { Button, type ButtonProps } from './components/Button';
+export { Input, type InputProps } from './components/Input';
+export { DateTimeRange, type DateTimeRangeProps } from './components/DateTimeRange';
