@@ -15,15 +15,17 @@ Una librería moderna de componentes React con Tailwind CSS y variables CSS cust
 ## 📦 Instalación
 
 ```bash
-npm install mlz-components
+npm install @sector.siit/mlz-components
 # o
-yarn add mlz-components
+yarn add @sector.siit/mlz-components
+# o
+bun add @sector.siit/mlz-components
 ```
 
 ## 🎯 Uso Básico
 
 ```tsx
-import { Button } from 'mlz-components';
+import { Button } from '@sector.siit/mlz-components';
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 {
-  "name": "mlz-components",
+  "name": "@sector.siit/mlz-components",
   "version": "1.0.0",
   "type": "module",
   "description": "Una librería de componentes React con Tailwind CSS y variables CSS customizables",
@@ -20,6 +20,10 @@
     "typecheck": "tsc --noEmit",
     "test": "jest",
     "prepublishOnly": "bun run build"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
     "react",
