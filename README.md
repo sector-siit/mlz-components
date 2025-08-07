@@ -2,6 +2,25 @@
 
 Una librería moderna de componentes React con Tailwind CSS y variables CSS customizables.
 
+<!-- Badges -->
+[![CI/CD Pipeline](https://github.com/sector-siit/mlz-components/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/sector-siit/mlz-components/actions/workflows/ci-cd.yml)
+[![Build Status](https://github.com/sector-siit/mlz-components/actions/workflows/build.yml/badge.svg)](https://github.com/sector-siit/mlz-components/actions/workflows/build.yml)
+[![NPM Version](https://img.shields.io/npm/v/@sector.siit/mlz-components.svg)](https://www.npmjs.com/package/@sector.siit/mlz-components)
+[![NPM Downloads](https://img.shields.io/npm/dm/@sector.siit/mlz-components.svg)](https://www.npmjs.com/package/@sector.siit/mlz-components)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/@sector.siit/mlz-components)](https://bundlephobia.com/package/@sector.siit/mlz-components)
+
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![Storybook](https://img.shields.io/badge/Storybook-Available-ff69b4.svg)](https://sector-siit.github.io/mlz-components/)
+[![License](https://img.shields.io/npm/l/@sector.siit/mlz-components.svg)](https://github.com/sector-siit/mlz-components/blob/main/LICENSE)
+[![Contributors](https://img.shields.io/github/contributors/sector-siit/mlz-components.svg)](https://github.com/sector-siit/mlz-components/graphs/contributors)
+[![GitHub Stars](https://img.shields.io/github/stars/sector-siit/mlz-components.svg)](https://github.com/sector-siit/mlz-components/stargazers)
+
+[![Release Candidate](https://img.shields.io/badge/RC-Available-yellow.svg)](https://github.com/sector-siit/mlz-components/releases)
+[![Production](https://img.shields.io/badge/Status-Production%20Ready-green.svg)](https://www.npmjs.com/package/@sector.siit/mlz-components)
+[![Components](https://img.shields.io/badge/Components-2%20Available-brightgreen.svg)](#-componentes)
+[![Maintenance](https://img.shields.io/badge/Maintained-Yes-green.svg)](https://github.com/sector-siit/mlz-components)
+[![Last Commit](https://img.shields.io/github/last-commit/sector-siit/mlz-components.svg)](https://github.com/sector-siit/mlz-components/commits/main)
+
 ## 🚀 Características
 
 - ⚛️ **React 18** - Componentes modernos con TypeScript

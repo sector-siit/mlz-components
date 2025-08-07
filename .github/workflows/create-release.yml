@@ -32,7 +32,7 @@ jobs:
         run: |
           PACKAGE_VERSION="${{ steps.version.outputs.package_version }}"
           NPM_VERSION=$(npm view @sector.siit/mlz-components version 2>/dev/null || echo "0.0.0")
-          
+
           if [ "$PACKAGE_VERSION" = "$NPM_VERSION" ]; then
             echo "should_create_release=true" >> $GITHUB_OUTPUT
             echo "✅ Version $PACKAGE_VERSION found on NPM, proceeding with release"

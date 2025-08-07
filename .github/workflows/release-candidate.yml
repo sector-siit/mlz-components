@@ -22,10 +22,10 @@ jobs:
         uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest
-        
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
-        
+
       - name: Generate RC version
         id: rc_version
         run: |
@@ -37,13 +37,13 @@ jobs:
           echo "rc_npm_version=$RC_NPM_VERSION" >> $GITHUB_OUTPUT
           echo "package_version=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
           echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
-        
+
       - name: Build library
         run: bun run build
-      
+
       - name: Build Storybook
         run: bun run build-storybook
-      
+
       - name: Generate RC changelog
         run: |
           echo "## 🧪 Release Candidate ${{ steps.rc_version.outputs.rc_version }}" > RC_NOTES.md
@@ -74,7 +74,7 @@ jobs:
           echo "- **Latest stable:** \`npm install @sector.siit/mlz-components@latest\`" >> RC_NOTES.md
           echo "- **Release Candidate:** \`npm install @sector.siit/mlz-components@rc\`" >> RC_NOTES.md
           echo "- **Specific RC:** \`npm install @sector.siit/mlz-components@${{ steps.rc_version.outputs.rc_npm_version }}\`" >> RC_NOTES.md
-        
+
       - name: Update package.json for RC
         run: |
           echo "📝 Updating package.json with RC version: ${{ steps.rc_version.outputs.rc_npm_version }}"
@@ -83,12 +83,12 @@ jobs:
             pkg.version = '${{ steps.rc_version.outputs.rc_npm_version }}';
             require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
           "
-        
+
       - name: Setup Node.js for NPM publish
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          registry-url: 'https://registry.npmjs.org'
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Publish RC to NPM
         run: |
@@ -96,14 +96,14 @@ jobs:
           npm publish --tag rc
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        
+
       - name: Create RC Tag
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git tag -a ${{ steps.rc_version.outputs.rc_version }} -m "Release Candidate ${{ steps.rc_version.outputs.rc_version }}"
           git push origin ${{ steps.rc_version.outputs.rc_version }}
-        
+
       - name: Create RC Release
         id: create_rc_release
         uses: actions/create-release@v1
