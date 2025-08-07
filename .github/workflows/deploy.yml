@@ -221,23 +221,34 @@ jobs:
       
     - name: Generate RC changelog
       run: |
+        RC_NPM_VERSION="${{ steps.rc_version.outputs.package_version }}-rc.${{ steps.rc_version.outputs.timestamp }}"
         echo "## 🧪 Release Candidate ${{ steps.rc_version.outputs.rc_version }}" > RC_NOTES.md
         echo "" >> RC_NOTES.md
         echo "### ⚠️ This is a Release Candidate" >> RC_NOTES.md
         echo "This version is for testing purposes only. Not recommended for production use." >> RC_NOTES.md
         echo "" >> RC_NOTES.md
-        echo "### 📦 Test Installation" >> RC_NOTES.md
+        echo "### 📦 NPM Installation" >> RC_NOTES.md
         echo "\`\`\`bash" >> RC_NOTES.md
-        echo "# Download the assets from this release and test locally" >> RC_NOTES.md
+        echo "# Install the Release Candidate from NPM" >> RC_NOTES.md
+        echo "npm install @sector.siit/mlz-components@$RC_NPM_VERSION" >> RC_NOTES.md
+        echo "" >> RC_NOTES.md
+        echo "# Or install the latest RC" >> RC_NOTES.md
+        echo "npm install @sector.siit/mlz-components@rc" >> RC_NOTES.md
         echo "\`\`\`" >> RC_NOTES.md
         echo "" >> RC_NOTES.md
         echo "### 🔍 What's being tested" >> RC_NOTES.md
         echo "- Component library build" >> RC_NOTES.md
         echo "- Storybook documentation" >> RC_NOTES.md
         echo "- TypeScript definitions" >> RC_NOTES.md
+        echo "- New Input component with variants and sizes" >> RC_NOTES.md
         echo "" >> RC_NOTES.md
         echo "### 📚 Preview Documentation" >> RC_NOTES.md
         echo "Storybook build included in release assets for preview." >> RC_NOTES.md
+        echo "" >> RC_NOTES.md
+        echo "### 🏷️ NPM Tags" >> RC_NOTES.md
+        echo "- **Latest stable:** \`npm install @sector.siit/mlz-components@latest\`" >> RC_NOTES.md
+        echo "- **Release Candidate:** \`npm install @sector.siit/mlz-components@rc\`" >> RC_NOTES.md
+        echo "- **Specific RC:** \`npm install @sector.siit/mlz-components@$RC_NPM_VERSION\`" >> RC_NOTES.md
         
     - name: Create RC Tag
       run: |
@@ -285,3 +296,31 @@ jobs:
         asset_path: ./storybook-${{ steps.rc_version.outputs.rc_version }}.zip
         asset_name: storybook-${{ steps.rc_version.outputs.rc_version }}.zip
         asset_content_type: application/zip
+
+    - name: Update package.json for RC
+      run: |
+        # Crear versión RC para NPM (sin la 'v' inicial)
+        RC_NPM_VERSION="${{ steps.rc_version.outputs.package_version }}-rc.${{ steps.rc_version.outputs.timestamp }}"
+        echo "RC NPM version: $RC_NPM_VERSION"
+        
+        # Actualizar temporalmente el package.json con la versión RC
+        bun --print "
+          const pkg = require('./package.json');
+          pkg.version = '$RC_NPM_VERSION';
+          require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
+        "
+        
+        echo "Updated package.json with RC version: $RC_NPM_VERSION"
+        
+    - name: Setup Node.js for NPM publish
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Publish RC to NPM
+      run: |
+        echo "Publishing Release Candidate to NPM..."
+        npm publish --tag rc
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
