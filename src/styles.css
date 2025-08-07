@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS por defecto para la librería */
+:root {
+  /* Colores primarios */
+  --mlz-primary-50: #eff6ff;
+  --mlz-primary-100: #dbeafe;
+  --mlz-primary-200: #bfdbfe;
+  --mlz-primary-300: #93c5fd;
+  --mlz-primary-400: #60a5fa;
+  --mlz-primary-500: #3b82f6;
+  --mlz-primary-600: #2563eb;
+  --mlz-primary-700: #1d4ed8;
+  --mlz-primary-800: #1e40af;
+  --mlz-primary-900: #1e3a8a;
+  --mlz-primary-950: #172554;
+
+  /* Colores secundarios */
+  --mlz-secondary-50: #f8fafc;
+  --mlz-secondary-100: #f1f5f9;
+  --mlz-secondary-200: #e2e8f0;
+  --mlz-secondary-300: #cbd5e1;
+  --mlz-secondary-400: #94a3b8;
+  --mlz-secondary-500: #64748b;
+  --mlz-secondary-600: #475569;
+  --mlz-secondary-700: #334155;
+  --mlz-secondary-800: #1e293b;
+  --mlz-secondary-900: #0f172a;
+  --mlz-secondary-950: #020617;
+
+  /* Espaciado */
+  --mlz-spacing-xs: 0.25rem;
+  --mlz-spacing-sm: 0.5rem;
+  --mlz-spacing-md: 1rem;
+  --mlz-spacing-lg: 1.5rem;
+  --mlz-spacing-xl: 2rem;
+  --mlz-spacing-2xl: 3rem;
+
+  /* Border radius */
+  --mlz-border-radius-sm: 0.25rem;
+  --mlz-border-radius-md: 0.375rem;
+  --mlz-border-radius-lg: 0.5rem;
+  --mlz-border-radius-xl: 0.75rem;
+
+  /* Font sizes */
+  --mlz-font-size-xs: 0.75rem;
+  --mlz-font-size-sm: 0.875rem;
+  --mlz-font-size-base: 1rem;
+  --mlz-font-size-lg: 1.125rem;
+  --mlz-font-size-xl: 1.25rem;
+}
+
+/* Clases personalizadas para componentes MLZ */
+@layer components {
+  .mlz-btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 text-white;
+    background-color: var(--mlz-primary-600, #2563eb);
+  }
+  
+  .mlz-btn-primary:hover {
+    background-color: var(--mlz-primary-700, #1d4ed8);
+  }
+  
+  .mlz-btn-secondary {
+    @apply bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 text-white;
+    background-color: var(--mlz-secondary-600, #475569);
+  }
+  
+  .mlz-btn-secondary:hover {
+    background-color: var(--mlz-secondary-700, #334155);
+  }
+}
