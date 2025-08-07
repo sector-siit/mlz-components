@@ -70,7 +70,8 @@ function App() {
 
 ## 📚 Documentación
 
-- 📖 **[Guía de Componentes](./docs/COMPONENTS.md)** - Documentación completa de todos los componentes
+- � **[Quick Start: Commits](./QUICK_START.md)** - Guía rápida para usar conventional commits
+- �📖 **[Guía de Componentes](./docs/COMPONENTS.md)** - Documentación completa de todos los componentes
 - 🎨 **[Personalización](./docs/CUSTOMIZATION.md)** - Variables CSS y temas personalizados
 - 🛠️ **[Guía de Desarrollo](./docs/DEVELOPER.md)** - Información para contribuidores
 - 🚀 **[CI/CD](./docs/CI-CD.md)** - Sistema de deployments automatizados
