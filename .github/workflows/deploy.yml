@@ -200,6 +200,9 @@ jobs:
       with:
         bun-version: latest
         
+    - name: Install dependencies
+      run: bun install --frozen-lockfile
+        
     - name: Generate RC version
       id: rc_version
       run: |
