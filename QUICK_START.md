@@ -68,12 +68,21 @@ feat: Add component.     ❌ Punto final
 - Genera changelog
 
 ## 🚨 Si falla la validación
-```bash
-# Ver qué está mal
-echo "tu commit" | bunx commitlint
+La validación ahora se hace automáticamente en los PRs usando GitHub Actions.
 
-# Usar asistente
+Si falla, verás:
+- ❌ Check fallido en el PR
+- 💬 Comentario automático con instrucciones
+- 📋 Lista de commits que necesitan ser corregidos
+
+Para corregir:
+```bash
+# Usar asistente para nuevo commit
 bun run commit
+
+# O hacer amend del último commit
+git commit --amend -m "feat: new commit message"
+git push --force-with-lease
 ```
 
 ## 🎯 ¡Nunca más versiones manuales!

@@ -15,7 +15,6 @@ on:
       - "bunfig.toml"
       - ".github/workflows/**"
       - ".releaserc.json"
-      - "commitlint.config.cjs"
   pull_request:
     branches: [main, develop]
     paths:
@@ -30,7 +29,6 @@ on:
       - "bunfig.toml"
       - ".github/workflows/**"
       - ".releaserc.json"
-      - "commitlint.config.cjs"
 
 jobs:
   # Validación de commits - se ejecuta siempre
@@ -58,6 +56,3 @@ jobs:
     name: 🏷️ Update Badges
     needs: build-and-test
     uses: ./.github/workflows/update-badges.yml
-    uses: ./.github/workflows/release-candidate.yml
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
