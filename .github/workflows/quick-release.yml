@@ -1,5 +1,4 @@
 name: Quick Release
-
 on:
   push:
     branches: [main]
