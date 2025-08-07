@@ -75,7 +75,6 @@ function App() {
 - 🛠️ **[Guía de Desarrollo](./docs/DEVELOPER.md)** - Información para contribuidores
 - 🚀 **[CI/CD](./docs/CI-CD.md)** - Sistema de deployments automatizados
 - 📊 **[Sistema de Badges](./docs/BADGES.md)** - Información sobre badges y estados
-- 📝 **[Conventional Commits](./docs/CONVENTIONAL_COMMITS.md)** - Formato de commits y versionado automático
 
 ## 🎨 Personalización Rápida
 
@@ -160,25 +159,9 @@ MIT
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Haz commits usando [Conventional Commits](./docs/CONVENTIONAL_COMMITS.md) (`git commit -m 'feat: add some AmazingFeature'`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
-
-### 📝 Commits
-
-Este proyecto usa **Conventional Commits** para versionado automático:
-
-```bash
-# Usar el asistente interactivo (recomendado)
-bun run commit
-
-# O formato manual
-git commit -m "feat: add new component"
-git commit -m "fix: resolve button issue"
-git commit -m "docs: update README"
-```
-
-Ver la [guía completa de Conventional Commits](./docs/CONVENTIONAL_COMMITS.md) para más detalles.
 
 ### 📋 Guías de Contribución
 

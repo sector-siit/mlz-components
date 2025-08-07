@@ -66,45 +66,234 @@ function App() {
     </div>
   );
 }
+}
 ```
 
-## 📚 Documentación
+## 🎨 Personalización con Variables CSS
 
-- 📖 **[Guía de Componentes](./docs/COMPONENTS.md)** - Documentación completa de todos los componentes
-- 🎨 **[Personalización](./docs/CUSTOMIZATION.md)** - Variables CSS y temas personalizados
-- 🛠️ **[Guía de Desarrollo](./docs/DEVELOPER.md)** - Información para contribuidores
-- 🚀 **[CI/CD](./docs/CI-CD.md)** - Sistema de deployments automatizados
-- 📊 **[Sistema de Badges](./docs/BADGES.md)** - Información sobre badges y estados
-- 📝 **[Conventional Commits](./docs/CONVENTIONAL_COMMITS.md)** - Formato de commits y versionado automático
-
-## 🎨 Personalización Rápida
+La librería utiliza variables CSS que puedes sobrescribir en tu proyecto:
 
 ```css
 /* En tu archivo CSS global */
 :root {
-  --mlz-primary-500: #10b981;  /* Color primario */
-  --mlz-border-radius-md: 0.5rem;  /* Border radius */
-  --mlz-font-size-base: 1rem;  /* Tamaño de fuente base */
+  /* Colores primarios */
+  --mlz-primary-500: #10b981;
+  --mlz-primary-600: #059669;
+  --mlz-primary-700: #047857;
+  
+  /* Espaciado */
+  --mlz-spacing-sm: 0.75rem;
+  --mlz-spacing-md: 1.25rem;
+  --mlz-spacing-lg: 2rem;
+  
+  /* Border radius */
+  --mlz-border-radius-md: 0.5rem;
+  
+  /* Tamaños de fuente */
+  --mlz-font-size-base: 1.125rem;
 }
 ```
 
-Ver la [guía completa de personalización](./docs/CUSTOMIZATION.md) para más opciones.
+### Variables Disponibles
+
+#### Colores
+- `--mlz-primary-[50-950]`: Paleta de colores primarios
+- `--mlz-secondary-[50-950]`: Paleta de colores secundarios
+
+#### Espaciado
+- `--mlz-spacing-xs`: 0.25rem (por defecto)
+- `--mlz-spacing-sm`: 0.5rem (por defecto)
+- `--mlz-spacing-md`: 1rem (por defecto)
+- `--mlz-spacing-lg`: 1.5rem (por defecto)
+- `--mlz-spacing-xl`: 2rem (por defecto)
+- `--mlz-spacing-2xl`: 3rem (por defecto)
+
+#### Border Radius
+- `--mlz-border-radius-sm`: 0.25rem (por defecto)
+- `--mlz-border-radius-md`: 0.375rem (por defecto)
+- `--mlz-border-radius-lg`: 0.5rem (por defecto)
+- `--mlz-border-radius-xl`: 0.75rem (por defecto)
+
+#### Tamaños de Fuente
+- `--mlz-font-size-xs`: 0.75rem (por defecto)
+- `--mlz-font-size-sm`: 0.875rem (por defecto)
+- `--mlz-font-size-base`: 1rem (por defecto)
+- `--mlz-font-size-lg`: 1.125rem (por defecto)
+- `--mlz-font-size-xl`: 1.25rem (por defecto)
+
+## 📚 Componentes
+
+### Button
+
+Un componente de botón versatil con múltiples variantes y tamaños.
+
+#### Props
+
+| Prop | Tipo | Default | Descripción |
+|------|------|---------|-------------|
+| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost'` | `'primary'` | Variante visual del botón |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamaño del botón |
+| `children` | `React.ReactNode` | - | Contenido del botón |
+| `disabled` | `boolean` | `false` | Estado deshabilitado |
+| `onClick` | `(event: MouseEvent) => void` | - | Función de click |
+
+#### Ejemplos
+
+```tsx
+// Variantes
+<Button variant="primary">Primario</Button>
+<Button variant="secondary">Secundario</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="ghost">Ghost</Button>
+
+// Tamaños
+<Button size="sm">Pequeño</Button>
+<Button size="md">Mediano</Button>
+<Button size="lg">Grande</Button>
+
+// Estados
+<Button disabled>Deshabilitado</Button>
+```
+
+### Input
+
+Componente de input con validación, estados y personalización completa.
+
+#### Props
+
+| Prop | Tipo | Default | Descripción |
+|------|------|---------|-------------|
+| `variant` | `'default' \| 'error' \| 'success'` | `'default'` | Estado visual del input |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamaño del input |
+| `label` | `string` | - | Texto del label |
+| `helperText` | `string` | - | Texto de ayuda |
+| `errorText` | `string` | - | Texto de error (sobrescribe helperText) |
+| `fullWidth` | `boolean` | `false` | Si el input ocupa todo el ancho |
+
+#### Ejemplos
+
+```tsx
+// Básico
+<Input placeholder="Ingresa tu nombre" />
+
+// Con label y ayuda
+<Input 
+  label="Email"
+  placeholder="usuario@ejemplo.com"
+  helperText="Te enviaremos notificaciones aquí"
+/>
+
+// Con error
+<Input 
+  label="Password"
+  type="password"
+  variant="error"
+  errorText="La contraseña debe tener al menos 8 caracteres"
+/>
+
+// Tamaños
+<Input size="sm" placeholder="Input pequeño" />
+<Input size="lg" placeholder="Input grande" />
+
+// Ancho completo
+<Input fullWidth placeholder="Ocupa todo el ancho" />
+```
+
+### DateTimeRange
+
+Componente para seleccionar un rango de fecha y hora con estilo consistente al Input.
+
+#### Props
+
+| Prop | Tipo | Default | Descripción |
+|------|------|---------|-------------|
+| `variant` | `'default' \| 'error' \| 'success'` | `'default'` | Estado visual del componente |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamaño del componente |
+| `type` | `'date' \| 'datetime-local' \| 'time'` | `'datetime-local'` | Tipo de input para fecha/hora |
+| `label` | `string` | - | Texto del label |
+| `helperText` | `string` | - | Texto de ayuda |
+| `errorText` | `string` | - | Texto de error (sobrescribe helperText) |
+| `fullWidth` | `boolean` | `false` | Si el componente ocupa todo el ancho |
+| `disabled` | `boolean` | `false` | Si el componente está deshabilitado |
+| `defaultStartDate` | `string` | `''` | Fecha inicial por defecto |
+| `defaultEndDate` | `string` | `''` | Fecha final por defecto |
+| `startPlaceholder` | `string` | `'Fecha inicial'` | Placeholder para fecha inicial |
+| `endPlaceholder` | `string` | `'Fecha final'` | Placeholder para fecha final |
+| `onRangeChange` | `(start: string, end: string) => void` | - | Callback cuando cambia el rango |
+
+#### Ejemplos
+
+```tsx
+// Básico con fecha y hora
+<DateTimeRange 
+  label="Período de trabajo"
+  type="datetime-local"
+  helperText="Selecciona tu horario"
+/>
+
+// Solo fechas
+<DateTimeRange 
+  label="Vacaciones"
+  type="date"
+  startPlaceholder="Fecha de salida"
+  endPlaceholder="Fecha de regreso"
+/>
+
+// Con valores por defecto
+<DateTimeRange 
+  label="Horario laboral"
+  type="datetime-local"
+  defaultStartDate="2024-01-15T09:00"
+  defaultEndDate="2024-01-15T17:00"
+/>
+
+// Con error
+<DateTimeRange 
+  label="Reserva de sala"
+  variant="error"
+  errorText="La fecha de inicio debe ser anterior a la fecha de fin"
+/>
+
+// Con éxito
+<DateTimeRange 
+  label="Período seleccionado"
+  variant="success"
+  helperText="Fechas válidas y disponibles"
+/>
+
+// Ancho completo
+<DateTimeRange 
+  fullWidth
+  label="Período completo"
+  helperText="Componente de ancho completo"
+/>
+
+// Con callback
+<DateTimeRange 
+  label="Selección interactiva"
+  onRangeChange={(start, end) => {
+    console.log(`Desde: ${start}, Hasta: ${end}`);
+  }}
+/>
+```
 
 ## 🛠️ Desarrollo
 
 ```bash
 # Instalar dependencias
-bun install
+npm install
 
 # Desarrollo con Storybook
-bun run storybook
+npm run storybook
 
 # Build de la librería
-bun run build
+npm run build
 
-# Lint y type check
-bun run lint
-bun run typecheck
+# Lint
+npm run lint
+
+# Type check
+npm run typecheck
 ```
 
 ## 🚀 CI/CD & Deployments
@@ -160,25 +349,9 @@ MIT
 
 1. Fork el proyecto
 2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Haz commits usando [Conventional Commits](./docs/CONVENTIONAL_COMMITS.md) (`git commit -m 'feat: add some AmazingFeature'`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
-
-### 📝 Commits
-
-Este proyecto usa **Conventional Commits** para versionado automático:
-
-```bash
-# Usar el asistente interactivo (recomendado)
-bun run commit
-
-# O formato manual
-git commit -m "feat: add new component"
-git commit -m "fix: resolve button issue"
-git commit -m "docs: update README"
-```
-
-Ver la [guía completa de Conventional Commits](./docs/CONVENTIONAL_COMMITS.md) para más detalles.
 
 ### 📋 Guías de Contribución
 

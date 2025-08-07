@@ -1,0 +1,34 @@
+# <type>[optional scope]: <description>
+#
+# [optional body]
+#
+# [optional footer(s)]
+#
+# --- TIPOS VÁLIDOS ---
+# feat:     Nueva funcionalidad (MINOR bump)
+# fix:      Corrección de bug (PATCH bump)
+# docs:     Solo documentación (PATCH bump)
+# style:    Cambios de formato (PATCH bump)
+# refactor: Refactorización (PATCH bump)
+# perf:     Mejoras de performance (PATCH bump)
+# test:     Agregar/actualizar tests (PATCH bump)
+# chore:    Cambios de build/tools (PATCH bump)
+# ci:       Cambios de CI/CD (PATCH bump)
+#
+# --- BREAKING CHANGES (MAJOR bump) ---
+# feat!: descripción
+# O agregar "BREAKING CHANGE:" en el footer
+#
+# --- EJEMPLOS ---
+# feat: add DateTimeRange component
+# fix: resolve button click handler issue
+# docs: update README with installation instructions
+# feat(input): add validation support
+# fix(button): correct error message display
+#
+# --- REGLAS ---
+# - Usar presente imperativo ("add", no "added" ni "adds")
+# - No capitalizar primera letra de descripción
+# - No punto final en descripción
+# - Máximo 100 caracteres en primera línea
+# - Usar body para explicar qué y por qué, no cómo
