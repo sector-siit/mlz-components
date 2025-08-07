@@ -22,6 +22,7 @@ El sistema de CI/CD está diseñado con una arquitectura modular que separa resp
 ├── publish-npm.yml        # 📦 Publicación a NPM
 ├── create-release.yml     # 🚀 Creación de releases
 ├── release-candidate.yml  # 🧪 Release candidates
+├── update-contributors.yml # 👥 Actualización de contributors
 └── quick-release.yml      # ⚡ Releases rápidos
 ```
 
@@ -32,6 +33,7 @@ El sistema de CI/CD está diseñado con una arquitectura modular que separa resp
 ✅ **Testing**: Fácil testeo individual de cada componente  
 ✅ **Escalabilidad**: Agregar nuevos flujos sin afectar existentes  
 ✅ **Debugging**: Identificación rápida de problemas específicos  
+✅ **Contributors**: Reconocimiento automático de contribuciones  
 
 ## 🔄 Flujos de Trabajo
 
@@ -57,6 +59,7 @@ graph TD
 - 📚 Storybook actualizado en GitHub Pages
 - 🚀 GitHub Release creado
 - 🏷️ Git tag generado
+- 👥 Contributors actualizados automáticamente
 
 ### 2. Push a `develop` - Release Candidate Pipeline
 
@@ -234,6 +237,26 @@ npm install @sector.siit/mlz-components@rc
 - ⏩ **Skipped**: Paso omitido condicionalmente
 
 ## 🔧 Maintenance
+
+### 👥 Contributors System
+
+El sistema de contributors se actualiza automáticamente en cada push a `main`:
+
+- **README.md**: Lista visual de contributors con avatars
+- **docs/CONTRIBUTORS_STATS.md**: Estadísticas detalladas de contribuciones
+- **Commits tracking**: Reconoce automáticamente nuevos contributors
+- **Skip CI**: Los commits de contributors usan `[skip ci]` para evitar loops
+
+#### Configuración Manual
+
+Si necesitas actualizar manualmente:
+
+```bash
+# Los contributors se actualizan automáticamente, pero si necesitas forzar:
+# 1. El workflow se ejecuta después de cada merge a main
+# 2. Usa la action akhilmhdh/contributors-readme-action
+# 3. Genera estadísticas con git log
+```
 
 ### Weekly Tasks
 - [ ] Revisar logs de workflows

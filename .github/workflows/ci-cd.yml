@@ -57,6 +57,13 @@ jobs:
     needs: [build-and-test, publish-npm]
     uses: ./.github/workflows/create-release.yml
     
+  # Update contributors solo en main después de todo
+  update-contributors:
+    name: 👥 Update Contributors
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [build-and-test, deploy-storybook, publish-npm, create-release]
+    uses: ./.github/workflows/update-contributors.yml
+    
   # Release Candidate solo en develop
   release-candidate:
     name: 🧪 Release Candidate

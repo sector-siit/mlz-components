@@ -242,6 +242,22 @@ MIT
 4. Push a la rama (`git push origin feature/AmazingFeature`)
 5. Abre un Pull Request
 
+### 📋 Guías de Contribución
+
+- [🛠️ Developer Guide](./docs/DEVELOPER.md) - Guía completa para desarrolladores
+- [🚀 CI/CD Documentation](./docs/CI-CD.md) - Sistema de deployments automatizados
+
+## 👥 Contributors
+
+¡Gracias a todas las personas que han contribuido a este proyecto!
+
+<!-- CONTRIBUTORS:START -->
+<!-- CONTRIBUTORS:END -->
+
+### 📊 Estadísticas de Contribuciones
+
+Para ver estadísticas detalladas de contribuciones, consulta [CONTRIBUTORS_STATS.md](./docs/CONTRIBUTORS_STATS.md).
+
 ## 📈 Roadmap
 
 - [x] ✅ Componente Button con variantes y tamaños

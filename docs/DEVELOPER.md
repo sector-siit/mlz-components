@@ -359,6 +359,16 @@ test: add missing test cases
 6. Crear PR hacia `develop`
 7. Pasar review de código
 8. Merge → Genera Release Candidate automáticamente
+9. **Contributors**: Al mergear a `main`, serás automáticamente agregado a la lista de contributors
+
+### Reconocimiento de Contribuciones
+
+El proyecto reconoce automáticamente las contribuciones:
+
+- **Contributors visual**: Tu avatar aparece en el README
+- **Estadísticas**: Commits y actividad registrados en `docs/CONTRIBUTORS_STATS.md`
+- **Automático**: No necesitas solicitar ser agregado manualmente
+- **Inclusivo**: Reconoce todo tipo de contribuciones (código, docs, tests, etc.)
 
 ### Code Review Checklist
 
