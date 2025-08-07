@@ -122,6 +122,50 @@ Un componente de botón versatil con múltiples variantes y tamaños.
 <Button disabled>Deshabilitado</Button>
 ```
 
+### Input
+
+Componente de input con validación, estados y personalización completa.
+
+#### Props
+
+| Prop | Tipo | Default | Descripción |
+|------|------|---------|-------------|
+| `variant` | `'default' \| 'error' \| 'success'` | `'default'` | Estado visual del input |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamaño del input |
+| `label` | `string` | - | Texto del label |
+| `helperText` | `string` | - | Texto de ayuda |
+| `errorText` | `string` | - | Texto de error (sobrescribe helperText) |
+| `fullWidth` | `boolean` | `false` | Si el input ocupa todo el ancho |
+
+#### Ejemplos
+
+```tsx
+// Básico
+<Input placeholder="Ingresa tu nombre" />
+
+// Con label y ayuda
+<Input 
+  label="Email"
+  placeholder="usuario@ejemplo.com"
+  helperText="Te enviaremos notificaciones aquí"
+/>
+
+// Con error
+<Input 
+  label="Password"
+  type="password"
+  variant="error"
+  errorText="La contraseña debe tener al menos 8 caracteres"
+/>
+
+// Tamaños
+<Input size="sm" placeholder="Input pequeño" />
+<Input size="lg" placeholder="Input grande" />
+
+// Ancho completo
+<Input fullWidth placeholder="Ocupa todo el ancho" />
+```
+
 ## 🛠️ Desarrollo
 
 ```bash
@@ -141,17 +185,50 @@ npm run lint
 npm run typecheck
 ```
 
-## 🚀 Despliegue
+## 🚀 CI/CD & Deployments
 
-El proyecto incluye GitHub Actions para:
+El proyecto incluye un sistema completo de CI/CD automatizado:
 
-1. **Despliegue automático a NPM** cuando cambia la versión en `package.json`
-2. **Despliegue de Storybook a GitHub Pages** en cada push a main
+### 📦 Releases Automáticos
 
-### Configuración necesaria:
+#### Production Releases (main)
+- **Trigger**: Push a `main` con cambio de versión en `package.json`
+- **Outputs**: 
+  - 📦 NPM package publicado
+  - 📚 Storybook actualizado en GitHub Pages
+  - 🚀 GitHub Release con changelog
+  - 🏷️ Git tag automático
 
-1. **NPM Token**: Añade `NPM_TOKEN` a los secrets de GitHub
-2. **GitHub Pages**: Habilita GitHub Pages en la configuración del repositorio
+#### Release Candidates (develop)
+- **Trigger**: Cualquier push a `develop`
+- **Outputs**:
+  - 🧪 NPM package con tag `@rc`
+  - 📋 GitHub Prerelease
+  - 📊 Assets descargables (build + storybook)
+
+### 🎯 Instalación de Versiones
+
+```bash
+# Última versión estable
+npm install @sector.siit/mlz-components
+
+# Última release candidate
+npm install @sector.siit/mlz-components@rc
+
+# Versión específica de RC
+npm install @sector.siit/mlz-components@1.0.0-rc.202508071430
+```
+
+### ⚡ Quick Releases
+
+Para cambios solo de documentación, el sistema detecta automáticamente y ejecuta un pipeline optimizado de ~2 minutos.
+
+### 📋 Configuración Requerida
+
+1. **NPM Token**: Agregar `NPM_TOKEN` a GitHub Secrets
+2. **GitHub Pages**: Habilitar en configuración del repositorio
+
+Ver [documentación completa de CI/CD](./docs/CI-CD.md) para más detalles.
 
 ## 📄 Licencia
 
@@ -167,10 +244,16 @@ MIT
 
 ## 📈 Roadmap
 
-- [ ] Componente Input
-- [ ] Componente Card
-- [ ] Componente Modal
-- [ ] Componente Dropdown
-- [ ] Sistema de themes predefenidos
-- [ ] Componentes de formulario
-- [ ] Componentes de navegación
+- [x] ✅ Componente Button con variantes y tamaños
+- [x] ✅ Componente Input con validación y estados
+- [x] ✅ Sistema de CI/CD automatizado
+- [x] ✅ Release Candidates con NPM
+- [x] ✅ Documentación completa con Storybook
+- [ ] 🔄 Componente Card
+- [ ] 🔄 Componente Modal
+- [ ] 🔄 Componente Dropdown
+- [ ] 🔄 Sistema de themes predefinidos
+- [ ] 🔄 Componentes de formulario avanzados
+- [ ] 🔄 Componentes de navegación
+- [ ] 🔄 Componente DatePicker
+- [ ] 🔄 Componente DataTable

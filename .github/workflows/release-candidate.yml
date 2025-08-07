@@ -1,0 +1,145 @@
+name: Release Candidate
+
+on:
+  workflow_call:
+    secrets:
+      NPM_TOKEN:
+        required: true
+
+jobs:
+  release-candidate:
+    name: 🧪 Create Release Candidate
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+        
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+        
+      - name: Generate RC version
+        id: rc_version
+        run: |
+          PACKAGE_VERSION=$(bun --print "require('./package.json').version")
+          TIMESTAMP=$(date +%Y%m%d%H%M)
+          RC_VERSION="v${PACKAGE_VERSION}-rc.${TIMESTAMP}"
+          RC_NPM_VERSION="${PACKAGE_VERSION}-rc.${TIMESTAMP}"
+          echo "rc_version=$RC_VERSION" >> $GITHUB_OUTPUT
+          echo "rc_npm_version=$RC_NPM_VERSION" >> $GITHUB_OUTPUT
+          echo "package_version=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+          echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
+        
+      - name: Build library
+        run: bun run build
+      
+      - name: Build Storybook
+        run: bun run build-storybook
+      
+      - name: Generate RC changelog
+        run: |
+          echo "## 🧪 Release Candidate ${{ steps.rc_version.outputs.rc_version }}" > RC_NOTES.md
+          echo "" >> RC_NOTES.md
+          echo "### ⚠️ This is a Release Candidate" >> RC_NOTES.md
+          echo "This version is for testing purposes only. Not recommended for production use." >> RC_NOTES.md
+          echo "" >> RC_NOTES.md
+          echo "### 📦 NPM Installation" >> RC_NOTES.md
+          echo "\`\`\`bash" >> RC_NOTES.md
+          echo "# Install the Release Candidate from NPM" >> RC_NOTES.md
+          echo "npm install @sector.siit/mlz-components@${{ steps.rc_version.outputs.rc_npm_version }}" >> RC_NOTES.md
+          echo "" >> RC_NOTES.md
+          echo "# Or install the latest RC" >> RC_NOTES.md
+          echo "npm install @sector.siit/mlz-components@rc" >> RC_NOTES.md
+          echo "\`\`\`" >> RC_NOTES.md
+          echo "" >> RC_NOTES.md
+          echo "### 🔍 What's being tested" >> RC_NOTES.md
+          echo "- Component library build" >> RC_NOTES.md
+          echo "- Storybook documentation" >> RC_NOTES.md
+          echo "- TypeScript definitions" >> RC_NOTES.md
+          echo "- New Input component with variants and sizes" >> RC_NOTES.md
+          echo "- Button component improvements" >> RC_NOTES.md
+          echo "" >> RC_NOTES.md
+          echo "### 📚 Preview Documentation" >> RC_NOTES.md
+          echo "Storybook build included in release assets for preview." >> RC_NOTES.md
+          echo "" >> RC_NOTES.md
+          echo "### 🏷️ NPM Tags" >> RC_NOTES.md
+          echo "- **Latest stable:** \`npm install @sector.siit/mlz-components@latest\`" >> RC_NOTES.md
+          echo "- **Release Candidate:** \`npm install @sector.siit/mlz-components@rc\`" >> RC_NOTES.md
+          echo "- **Specific RC:** \`npm install @sector.siit/mlz-components@${{ steps.rc_version.outputs.rc_npm_version }}\`" >> RC_NOTES.md
+        
+      - name: Update package.json for RC
+        run: |
+          echo "📝 Updating package.json with RC version: ${{ steps.rc_version.outputs.rc_npm_version }}"
+          bun --print "
+            const pkg = require('./package.json');
+            pkg.version = '${{ steps.rc_version.outputs.rc_npm_version }}';
+            require('fs').writeFileSync('./package.json', JSON.stringify(pkg, null, 2));
+          "
+        
+      - name: Setup Node.js for NPM publish
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish RC to NPM
+        run: |
+          echo "🚀 Publishing Release Candidate to NPM with tag 'rc'..."
+          npm publish --tag rc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        
+      - name: Create RC Tag
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag -a ${{ steps.rc_version.outputs.rc_version }} -m "Release Candidate ${{ steps.rc_version.outputs.rc_version }}"
+          git push origin ${{ steps.rc_version.outputs.rc_version }}
+        
+      - name: Create RC Release
+        id: create_rc_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.rc_version.outputs.rc_version }}
+          release_name: "🧪 Release Candidate ${{ steps.rc_version.outputs.rc_version }}"
+          body_path: RC_NOTES.md
+          draft: false
+          prerelease: true
+
+      - name: Create zip for dist
+        run: |
+          cd dist && zip -r ../mlz-components-dist-${{ steps.rc_version.outputs.rc_version }}.zip . && cd ..
+
+      - name: Create zip for storybook
+        run: |
+          cd storybook-static && zip -r ../storybook-${{ steps.rc_version.outputs.rc_version }}.zip . && cd ..
+
+      - name: Upload build artifacts to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_rc_release.outputs.upload_url }}
+          asset_path: ./mlz-components-dist-${{ steps.rc_version.outputs.rc_version }}.zip
+          asset_name: mlz-components-dist-${{ steps.rc_version.outputs.rc_version }}.zip
+          asset_content_type: application/zip
+
+      - name: Upload Storybook to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_rc_release.outputs.upload_url }}
+          asset_path: ./storybook-${{ steps.rc_version.outputs.rc_version }}.zip
+          asset_name: storybook-${{ steps.rc_version.outputs.rc_version }}.zip
+          asset_content_type: application/zip
