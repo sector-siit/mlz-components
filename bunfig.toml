@@ -5,9 +5,6 @@ dev = true
 exact = false
 optional = true
 
-[install.cache]
-# Configuración de caché
-dir = "~/.bun/install/cache"
 
 [run]
 # Configuración de ejecución de scripts
