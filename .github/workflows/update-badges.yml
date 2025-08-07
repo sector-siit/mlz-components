@@ -24,16 +24,16 @@ jobs:
         run: |
           echo "Generating build status..."
           # El badge se genera automáticamente por GitHub Actions
-          
+
       - name: Check bundle size
         run: |
           echo "Checking bundle size..."
           bun run build
-          
+
           # Obtener el tamaño del bundle
           BUNDLE_SIZE=$(du -sh dist/ | cut -f1)
           echo "Bundle size: $BUNDLE_SIZE"
-          
+
           # Crear badge dinámico para el bundle size
           echo "Bundle size checked: $BUNDLE_SIZE"
 
@@ -42,7 +42,7 @@ jobs:
           # Contar componentes
           COMPONENT_COUNT=$(find src/components -maxdepth 1 -type d | grep -v "^src/components$" | wc -l)
           echo "Components count: $COMPONENT_COUNT"
-          
+
           # Esto se puede usar para badges dinámicos personalizados
           echo "COMPONENT_COUNT=$COMPONENT_COUNT" >> $GITHUB_ENV
 
@@ -50,10 +50,10 @@ jobs:
         run: |
           echo "Checking TypeScript..."
           bun run typecheck
-          
+
           echo "Running lint..."
           bun run lint
-          
+
           echo "Code quality checks passed ✅"
 
       - name: Summary
