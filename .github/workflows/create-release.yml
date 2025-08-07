@@ -1,0 +1,91 @@
+name: Create Release
+
+on:
+  workflow_call:
+
+jobs:
+  create-release:
+    name: 🚀 Create GitHub Release
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Get package version
+        id: version
+        run: |
+          VERSION=$(bun --print "require('./package.json').version")
+          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          echo "package_version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if version was published
+        id: npm_check
+        run: |
+          PACKAGE_VERSION="${{ steps.version.outputs.package_version }}"
+          NPM_VERSION=$(npm view @sector.siit/mlz-components version 2>/dev/null || echo "0.0.0")
+
+          if [ "$PACKAGE_VERSION" = "$NPM_VERSION" ]; then
+            echo "should_create_release=true" >> $GITHUB_OUTPUT
+            echo "✅ Version $PACKAGE_VERSION found on NPM, proceeding with release"
+          else
+            echo "should_create_release=false" >> $GITHUB_OUTPUT
+            echo "⏩ Version $PACKAGE_VERSION not published to NPM, skipping release"
+          fi
+
+      - name: Generate changelog
+        if: steps.npm_check.outputs.should_create_release == 'true'
+        id: changelog
+        run: |
+          echo "## 🚀 Changes in v${{ steps.version.outputs.package_version }}" > RELEASE_NOTES.md
+          echo "" >> RELEASE_NOTES.md
+          echo "### ✨ Features" >> RELEASE_NOTES.md
+          echo "- Updated MLZ Components library" >> RELEASE_NOTES.md
+          echo "- Button component with variants and customizable styles" >> RELEASE_NOTES.md
+          echo "- Input component with validation states and sizes" >> RELEASE_NOTES.md
+          echo "- Full TypeScript support" >> RELEASE_NOTES.md
+          echo "- CSS variables for easy customization" >> RELEASE_NOTES.md
+          echo "" >> RELEASE_NOTES.md
+          echo "### 📦 Installation" >> RELEASE_NOTES.md
+          echo "\`\`\`bash" >> RELEASE_NOTES.md
+          echo "npm install @sector.siit/mlz-components@${{ steps.version.outputs.package_version }}" >> RELEASE_NOTES.md
+          echo "\`\`\`" >> RELEASE_NOTES.md
+          echo "" >> RELEASE_NOTES.md
+          echo "### 📚 Documentation" >> RELEASE_NOTES.md
+          echo "- [📖 Storybook Documentation](https://sector-siit.github.io/mlz-components/)" >> RELEASE_NOTES.md
+          echo "- [📦 NPM Package](https://www.npmjs.com/package/@sector.siit/mlz-components)" >> RELEASE_NOTES.md
+          echo "- [🔧 GitHub Repository](https://github.com/sector-siit/mlz-components)" >> RELEASE_NOTES.md
+
+      - name: Create Git Tag
+        if: steps.npm_check.outputs.should_create_release == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git tag -a ${{ steps.version.outputs.version }} -m "Release ${{ steps.version.outputs.version }}"
+          git push origin ${{ steps.version.outputs.version }}
+
+      - name: Create GitHub Release
+        if: steps.npm_check.outputs.should_create_release == 'true'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          release_name: "📦 Release ${{ steps.version.outputs.version }}"
+          body_path: RELEASE_NOTES.md
+          draft: false
+          prerelease: false
+
+      - name: Skip message
+        if: steps.npm_check.outputs.should_create_release == 'false'
+        run: |
+          echo "⏩ Skipping release creation - package not published to NPM"
+          echo "Package version: ${{ steps.version.outputs.package_version }}"

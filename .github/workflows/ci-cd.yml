@@ -1,0 +1,80 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "tsconfig.json"
+      - "tailwind.config.js"
+      - "rollup.config.js"
+      - "postcss.config.cjs"
+      - ".storybook/**"
+      - "eslint.config.js"
+      - "bunfig.toml"
+      - ".github/workflows/**"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "tsconfig.json"
+      - "tailwind.config.js"
+      - "rollup.config.js"
+      - "postcss.config.cjs"
+      - ".storybook/**"
+      - "eslint.config.js"
+      - "bunfig.toml"
+      - ".github/workflows/**"
+
+jobs:
+  # Job principal de build y testing
+  build-and-test:
+    name: 🔨 Build & Test
+    uses: ./.github/workflows/build.yml
+
+  # Deploy Storybook solo en main
+  deploy-storybook:
+    name: 📚 Deploy Storybook
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build-and-test
+    uses: ./.github/workflows/deploy-storybook.yml
+
+  # Publish to NPM solo en main si la versión cambió
+  publish-npm:
+    name: 📦 Publish to NPM
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: build-and-test
+    uses: ./.github/workflows/publish-npm.yml
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  # Create release solo en main después de publicar
+  create-release:
+    name: 🚀 Create Release
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [build-and-test, publish-npm]
+    uses: ./.github/workflows/create-release.yml
+
+  # Update contributors solo en main después de todo
+  update-contributors:
+    name: 👥 Update Contributors
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    needs: [build-and-test, deploy-storybook, publish-npm, create-release]
+    uses: ./.github/workflows/update-contributors.yml
+
+  # Update badges en todos los casos
+  update-badges:
+    name: 🏷️ Update Badges
+    needs: build-and-test
+    uses: ./.github/workflows/update-badges.yml
+
+  # Release Candidate solo en develop
+  release-candidate:
+    name: 🧪 Release Candidate
+    if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+    needs: build-and-test
+    uses: ./.github/workflows/release-candidate.yml
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
