@@ -20,6 +20,8 @@ jobs:
 
       - name: Update Contributors
         uses: akhilmhdh/contributors-readme-action@v2.3.6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           # Configuración del formato
           image_size: 100
@@ -71,5 +73,5 @@ jobs:
             git config --local user.name "GitHub Action"
             git add docs/CONTRIBUTORS_STATS.md
             git commit -m "docs: update contributor statistics [skip ci]" || true
-            git push origin develop || true
+            git push origin main || true
           fi
