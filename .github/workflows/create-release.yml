@@ -24,8 +24,11 @@ jobs:
         id: version
         run: |
           VERSION=$(bun --print "require('./package.json').version")
-          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          BUILD_NUMBER=${{ github.run_number }}
+          TAG_VERSION="v${VERSION}.${BUILD_NUMBER}"
+          echo "version=$TAG_VERSION" >> $GITHUB_OUTPUT
           echo "package_version=$VERSION" >> $GITHUB_OUTPUT
+          echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
 
       - name: Check if version was published
         id: npm_check
@@ -45,7 +48,7 @@ jobs:
         if: steps.npm_check.outputs.should_create_release == 'true'
         id: changelog
         run: |
-          echo "## 🚀 Changes in v${{ steps.version.outputs.package_version }}" > RELEASE_NOTES.md
+          echo "## 🚀 Changes in ${{ steps.version.outputs.version }}" > RELEASE_NOTES.md
           echo "" >> RELEASE_NOTES.md
           echo "### ✨ Features" >> RELEASE_NOTES.md
           echo "- Updated MLZ Components library" >> RELEASE_NOTES.md
@@ -58,6 +61,11 @@ jobs:
           echo "\`\`\`bash" >> RELEASE_NOTES.md
           echo "npm install @sector.siit/mlz-components@${{ steps.version.outputs.package_version }}" >> RELEASE_NOTES.md
           echo "\`\`\`" >> RELEASE_NOTES.md
+          echo "" >> RELEASE_NOTES.md
+          echo "### 🔢 Build Information" >> RELEASE_NOTES.md
+          echo "- Package Version: \`${{ steps.version.outputs.package_version }}\`" >> RELEASE_NOTES.md
+          echo "- Build Number: \`${{ steps.version.outputs.build_number }}\`" >> RELEASE_NOTES.md
+          echo "- Full Tag: \`${{ steps.version.outputs.version }}\`" >> RELEASE_NOTES.md
           echo "" >> RELEASE_NOTES.md
           echo "### 📚 Documentation" >> RELEASE_NOTES.md
           echo "- [📖 Storybook Documentation](https://sector-siit.github.io/mlz-components/)" >> RELEASE_NOTES.md

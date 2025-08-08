@@ -35,7 +35,11 @@ jobs:
         run: |
           # Obtener la versión actual del package.json
           CURRENT_VERSION=$(bun --print "require('./package.json').version")
+          BUILD_NUMBER=${{ github.run_number }}
+          TAG_VERSION="v${CURRENT_VERSION}.${BUILD_NUMBER}"
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
+          echo "tag_version=$TAG_VERSION" >> $GITHUB_OUTPUT
 
           # Verificar si existe en NPM
           NPM_VERSION=$(npm view @sector.siit/mlz-components version 2>/dev/null || echo "0.0.0")
@@ -43,7 +47,7 @@ jobs:
 
           if [ "$CURRENT_VERSION" != "$NPM_VERSION" ]; then
             echo "version_changed=true" >> $GITHUB_OUTPUT
-            echo "🚀 Version changed: $NPM_VERSION → $CURRENT_VERSION"
+            echo "🚀 Version changed: $NPM_VERSION → $CURRENT_VERSION (Build: $BUILD_NUMBER)"
           else
             echo "version_changed=false" >> $GITHUB_OUTPUT
             echo "ℹ️ Version unchanged: $CURRENT_VERSION"
@@ -72,8 +76,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git tag -a "v${{ steps.version_check.outputs.current_version }}" -m "Release v${{ steps.version_check.outputs.current_version }}"
-          git push origin "v${{ steps.version_check.outputs.current_version }}"
+          git tag -a "${{ steps.version_check.outputs.tag_version }}" -m "Release ${{ steps.version_check.outputs.tag_version }}"
+          git push origin "${{ steps.version_check.outputs.tag_version }}"
 
       - name: Create GitHub Release
         if: steps.version_check.outputs.version_changed == 'true'
@@ -81,15 +85,20 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "v${{ steps.version_check.outputs.current_version }}"
-          release_name: "📦 Release v${{ steps.version_check.outputs.current_version }}"
+          tag_name: "${{ steps.version_check.outputs.tag_version }}"
+          release_name: "📦 Release ${{ steps.version_check.outputs.tag_version }}"
           body: |
-            ## 🚀 Release v${{ steps.version_check.outputs.current_version }}
+            ## 🚀 Release ${{ steps.version_check.outputs.tag_version }}
 
             ### 📦 Installation
             ```bash
             npm install @sector.siit/mlz-components@${{ steps.version_check.outputs.current_version }}
             ```
+
+            ### 🔢 Build Information
+            - Package Version: `${{ steps.version_check.outputs.current_version }}`
+            - Build Number: `${{ steps.version_check.outputs.build_number }}`
+            - Full Tag: `${{ steps.version_check.outputs.tag_version }}`
 
             ### 📚 Documentation
             - [Storybook Documentation](https://sector-siit.github.io/mlz-components/)

@@ -30,12 +30,14 @@ jobs:
         id: rc_version
         run: |
           PACKAGE_VERSION=$(bun --print "require('./package.json').version")
+          BUILD_NUMBER=${{ github.run_number }}
           TIMESTAMP=$(date +%Y%m%d%H%M)
-          RC_VERSION="v${PACKAGE_VERSION}-rc.${TIMESTAMP}"
+          RC_VERSION="v${PACKAGE_VERSION}.${BUILD_NUMBER}-rc.${TIMESTAMP}"
           RC_NPM_VERSION="${PACKAGE_VERSION}-rc.${TIMESTAMP}"
           echo "rc_version=$RC_VERSION" >> $GITHUB_OUTPUT
           echo "rc_npm_version=$RC_NPM_VERSION" >> $GITHUB_OUTPUT
           echo "package_version=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+          echo "build_number=$BUILD_NUMBER" >> $GITHUB_OUTPUT
           echo "timestamp=$TIMESTAMP" >> $GITHUB_OUTPUT
 
       - name: Build library
@@ -51,7 +53,13 @@ jobs:
           echo "### ⚠️ This is a Release Candidate" >> RC_NOTES.md
           echo "This version is for testing purposes only. Not recommended for production use." >> RC_NOTES.md
           echo "" >> RC_NOTES.md
-          echo "### 📦 NPM Installation" >> RC_NOTES.md
+          echo "### � Build Information" >> RC_NOTES.md
+          echo "- Package Version: \`${{ steps.rc_version.outputs.package_version }}\`" >> RC_NOTES.md
+          echo "- Build Number: \`${{ steps.rc_version.outputs.build_number }}\`" >> RC_NOTES.md
+          echo "- RC Timestamp: \`${{ steps.rc_version.outputs.timestamp }}\`" >> RC_NOTES.md
+          echo "- Full Tag: \`${{ steps.rc_version.outputs.rc_version }}\`" >> RC_NOTES.md
+          echo "" >> RC_NOTES.md
+          echo "### �📦 NPM Installation" >> RC_NOTES.md
           echo "\`\`\`bash" >> RC_NOTES.md
           echo "# Install the Release Candidate from NPM" >> RC_NOTES.md
           echo "npm install @sector.siit/mlz-components@${{ steps.rc_version.outputs.rc_npm_version }}" >> RC_NOTES.md
