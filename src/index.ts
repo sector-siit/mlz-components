@@ -1,9 +1,12 @@
 // Importar estilos
-import './styles.css';
+import "./styles.css";
 
 // Exportar componentes e
-export { Button } from './components/Button';
-export type { ButtonProps } from './components/Button';
+export { Button } from "./components/Button";
+export type { ButtonProps } from "./components/Button";
 
-export { Input } from './components/Input';
-export type { InputProps } from './components/Input';
+export { Input } from "./components/Input";
+export type { InputProps } from "./components/Input";
+
+export { UserCard } from "./components/UserCard";
+export type { UserCardProps } from "./components/UserCard";

@@ -1,83 +1,74 @@
 {
-  "name": "@sector.siit/mlz-components",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Una librería de componentes React con Tailwind CSS y variables CSS customizables",
-  "main": "dist/index.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "scripts": {
-    "build": "rollup -c",
-    "build:watch": "rollup -c -w",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "typecheck": "tsc --noEmit",
-    "test": "jest",
-    "prepublishOnly": "bun run build"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
-  "keywords": [
-    "react",
-    "components",
-    "tailwind",
-    "typescript",
-    "ui-library"
-  ],
-  "author": "Pablo Lugo",
-  "license": "MIT",
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.32.0",
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-typescript": "^11.1.5",
-    "@storybook/addon-essentials": "^7.6.6",
-    "@storybook/addon-interactions": "^7.6.6",
-    "@storybook/addon-links": "^7.6.6",
-    "@storybook/blocks": "^7.6.6",
-    "@storybook/react": "^7.6.6",
-    "@storybook/react-vite": "^7.6.6",
-    "@storybook/testing-library": "^0.2.2",
-    "@types/minimatch": "^6.0.0",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "@typescript-eslint/eslint-plugin": "^8.39.0",
-    "@typescript-eslint/parser": "^8.39.0",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.56.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.20",
-    "globals": "^16.3.0",
-    "postcss": "^8.4.32",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rollup": "^4.9.1",
-    "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-postcss": "^4.0.2",
-    "storybook": "^7.6.6",
-    "tailwindcss": "^3.3.6",
-    "typescript": "^5.3.3",
-    "vite": "^5.0.10"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pablolugo/mlz-components.git"
-  },
-  "homepage": "https://pablolugo.github.io/mlz-components",
-  "bugs": {
-    "url": "https://github.com/pablolugo/mlz-components/issues"
-  }
+	"name": "@sector.siit/mlz-components",
+	"version": "1.0.01",
+	"type": "module",
+	"description": "Una librería de componentes React con Tailwind CSS y variables CSS customizables",
+	"main": "dist/index.js",
+	"module": "dist/index.esm.js",
+	"types": "dist/index.d.ts",
+	"files": ["dist", "README.md"],
+	"scripts": {
+		"build": "rollup -c",
+		"build:watch": "rollup -c -w",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build",
+		"lint": "eslint src",
+		"lint:fix": "eslint src --fix",
+		"typecheck": "tsc --noEmit",
+		"test": "jest",
+		"prepublishOnly": "bun run build"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"keywords": ["react", "components", "tailwind", "typescript", "ui-library"],
+	"author": "Pablo Lugo",
+	"license": "MIT",
+	"peerDependencies": {
+		"react": ">=16.8.0",
+		"react-dom": ">=16.8.0"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.32.0",
+		"@rollup/plugin-commonjs": "^25.0.7",
+		"@rollup/plugin-node-resolve": "^15.2.3",
+		"@rollup/plugin-typescript": "^11.1.5",
+		"@storybook/addon-essentials": "^7.6.6",
+		"@storybook/addon-interactions": "^7.6.6",
+		"@storybook/addon-links": "^7.6.6",
+		"@storybook/blocks": "^7.6.6",
+		"@storybook/react": "^7.6.6",
+		"@storybook/react-vite": "^7.6.6",
+		"@storybook/testing-library": "^0.2.2",
+		"@types/minimatch": "^6.0.0",
+		"@types/react": "^18.2.45",
+		"@types/react-dom": "^18.2.18",
+		"@typescript-eslint/eslint-plugin": "^8.39.0",
+		"@typescript-eslint/parser": "^8.39.0",
+		"autoprefixer": "^10.4.16",
+		"eslint": "^8.56.0",
+		"eslint-plugin-react": "^7.33.2",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"eslint-plugin-react-refresh": "^0.4.20",
+		"globals": "^16.3.0",
+		"postcss": "^8.4.32",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"rollup": "^4.9.1",
+		"rollup-plugin-dts": "^6.1.0",
+		"rollup-plugin-postcss": "^4.0.2",
+		"storybook": "^7.6.6",
+		"tailwindcss": "^3.3.6",
+		"typescript": "^5.3.3",
+		"vite": "^5.0.10"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pablolugo/mlz-components.git"
+	},
+	"homepage": "https://pablolugo.github.io/mlz-components",
+	"bugs": {
+		"url": "https://github.com/pablolugo/mlz-components/issues"
+	}
 }
