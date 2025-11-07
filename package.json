@@ -15,8 +15,8 @@
 		"build:watch": "rollup -c -w",
 		"storybook": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
-		"lint": "eslint src",
-		"lint:fix": "eslint src --fix",
+		"lint": "biome lint src",
+		"lint:fix": "biome lint src --fix",
 		"typecheck": "tsc --noEmit",
 		"test": "jest",
 		"prepublishOnly": "bun run build"
