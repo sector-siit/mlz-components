@@ -220,9 +220,9 @@ Utiliza clases de Tailwind con fallbacks a variables CSS:
 const classes = [
   'bg-white border border-gray-200 text-gray-700',
   // CSS Variables con fallbacks
-  'bg-[var(--mlz-newcomponent-bg,#ffffff)]',
-  'border-[var(--mlz-newcomponent-border,#e5e7eb)]',
-  'text-[var(--mlz-newcomponent-text,#374151)]'
+  'bg-(--mlz-newcomponent-bg,#ffffff)',
+  'border-(--mlz-newcomponent-border,#e5e7eb)',
+  'text-(--mlz-newcomponent-text,#374151)'
 ].join(' ');
 ```
 

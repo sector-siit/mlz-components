@@ -117,7 +117,7 @@ Un componente de botón versatil con múltiples variantes y tamaños.
 
 | Prop | Tipo | Default | Descripción |
 |------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost'` | `'primary'` | Variante visual del botón |
+| `variant` | `'primary' \| 'secondary' \| 'outline-solid' \| 'ghost'` | `'primary'` | Variante visual del botón |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamaño del botón |
 | `children` | `React.ReactNode` | - | Contenido del botón |
 | `disabled` | `boolean` | `false` | Estado deshabilitado |

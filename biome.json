@@ -1,0 +1,178 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.3.4/schema.json",
+	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+	"files": {},
+	"formatter": { "enabled": true, "indentStyle": "tab" },
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": false,
+			"suspicious": {
+				"noUnknownAtRules": {
+					"level": "off",
+					"options": {
+						"ignore": ["@theme", "@utility", "@apply"]
+					}
+				}
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		},
+		"linter": {
+			"enabled": false
+		}
+	},
+	"javascript": { "formatter": { "quoteStyle": "double" } },
+	"overrides": [
+		{
+			"includes": ["src/styles.css", "**/*.css"],
+			"linter": {
+				"enabled": false
+			}
+		},
+		{
+			"javascript": {
+				"globals": [
+					"onscrollend",
+					"onpointerleave",
+					"oncontextrestored",
+					"onemptied",
+					"ongamepaddisconnected",
+					"onkeypress",
+					"onloadeddata",
+					"onmouseup",
+					"onvolumechange",
+					"onpaste",
+					"onstorage",
+					"onkeyup",
+					"onabort",
+					"oncut",
+					"ontransitionrun",
+					"onafterprint",
+					"onblur",
+					"ondurationchange",
+					"ontransitionstart",
+					"oncanplaythrough",
+					"onanimationend",
+					"onmouseleave",
+					"ondragleave",
+					"onplay",
+					"onunhandledrejection",
+					"onbeforeprint",
+					"oncommand",
+					"onpointercancel",
+					"onsubmit",
+					"ondragstart",
+					"onmessage",
+					"location",
+					"onoffline",
+					"onappinstalled",
+					"onwheel",
+					"onended",
+					"onkeydown",
+					"onclick",
+					"onfocus",
+					"onscroll",
+					"ongamepadconnected",
+					"oncanplay",
+					"onpointerdown",
+					"ondeviceorientationabsolute",
+					"onauxclick",
+					"ondevicemotion",
+					"onratechange",
+					"ontransitionend",
+					"onscrollsnapchanging",
+					"onchange",
+					"onselect",
+					"onbeforeinstallprompt",
+					"onbeforetoggle",
+					"onmouseout",
+					"ontimeupdate",
+					"ondragover",
+					"oncuechange",
+					"ontransitioncancel",
+					"onprogress",
+					"onbeforeinput",
+					"onpointerenter",
+					"onmouseenter",
+					"oninvalid",
+					"onpointerout",
+					"onpagereveal",
+					"onpause",
+					"onanimationstart",
+					"onwaiting",
+					"onscrollsnapchange",
+					"ondeviceorientation",
+					"onclose",
+					"onbeforeunload",
+					"oncancel",
+					"onseeked",
+					"onpointerover",
+					"ongotpointercapture",
+					"onloadedmetadata",
+					"onpageshow",
+					"onstalled",
+					"oncontextmenu",
+					"onreset",
+					"ondrag",
+					"onbeforematch",
+					"onload",
+					"onlostpointercapture",
+					"onsuspend",
+					"onselectionchange",
+					"onpagehide",
+					"onrejectionhandled",
+					"onunload",
+					"onanimationcancel",
+					"onmousedown",
+					"onpointerup",
+					"onmouseover",
+					"onformdata",
+					"oncontentvisibilityautostatechange",
+					"onresize",
+					"onsearch",
+					"ontoggle",
+					"onpageswap",
+					"onbeforexrselect",
+					"onlanguagechange",
+					"ondragenter",
+					"onerror",
+					"onpointermove",
+					"onmousemove",
+					"ondrop",
+					"onhashchange",
+					"onsecuritypolicyviolation",
+					"onslotchange",
+					"oncopy",
+					"onanimationiteration",
+					"ondblclick",
+					"ondragend",
+					"onpointerrawupdate",
+					"onpopstate",
+					"onplaying",
+					"oncontextlost",
+					"onloadstart",
+					"onseeking",
+					"oninput",
+					"onmessageerror",
+					"onselectstart",
+					"onmousewheel",
+					"ononline"
+				]
+			},
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noUnusedVariables": "off",
+						"useExhaustiveDependencies": "warn",
+						"useHookAtTopLevel": "error"
+					},
+					"suspicious": { "noConsole": "warn" }
+				}
+			}
+		}
+	]
+}
