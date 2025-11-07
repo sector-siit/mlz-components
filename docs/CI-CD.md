@@ -195,7 +195,7 @@ Acceder en: `https://github.com/sector-siit/mlz-components/actions`
 ```yaml
 # Asegurar que está el paso de instalación
 - name: Install dependencies
-  run: bun install --frozen-lockfile
+  run: bun install
 ```
 
 #### ❌ "NPM_TOKEN not found"
