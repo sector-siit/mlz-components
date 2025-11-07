@@ -31,6 +31,7 @@ const inputClasses = (hasError?: boolean, fullWidth?: boolean) => {
 		labelStyle: `block text-base font-bold text-${colorClass}`,
 		inputStyle: [
 			"disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-primary-300",
+			"text-primary-600",
 			"block w-full rounded border px-4 py-2",
 			"placeholder:text-base",
 			"focus:outline-none focus:ring-2",
