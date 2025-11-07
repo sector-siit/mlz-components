@@ -1,47 +1,36 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import typescript from '@rollup/plugin-typescript';
-import postcss from 'rollup-plugin-postcss';
-import dts from 'rollup-plugin-dts';
-import { readFileSync } from 'node:fs';
+import { readFileSync } from "node:fs";
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import typescript from "@rollup/plugin-typescript";
+import dts from "rollup-plugin-dts";
 
-const packageJson = JSON.parse(readFileSync('./package.json', 'utf8'));
+const packageJson = JSON.parse(readFileSync("./package.json", "utf8"));
 
 export default [
   {
-    input: 'src/index.ts',
+    input: "src/index.ts",
     output: [
       {
         file: packageJson.main,
-        format: 'cjs',
+        format: "cjs",
         sourcemap: true,
       },
       {
         file: packageJson.module,
-        format: 'esm',
+        format: "esm",
         sourcemap: true,
       },
     ],
     plugins: [
       resolve(),
       commonjs(),
-      typescript({ tsconfig: './tsconfig.json' }),
-      postcss({
-        config: {
-          path: './postcss.config.js',
-        },
-        extensions: ['.css'],
-        minimize: true,
-        inject: {
-          insertAt: 'top',
-        },
-      }),
+      typescript({ tsconfig: "./tsconfig.json" }),
     ],
-    external: ['react', 'react-dom'],
+    external: ["react", "react-dom"],
   },
   {
-    input: 'dist/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+    input: "dist/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
     external: [/\.css$/],
   },
