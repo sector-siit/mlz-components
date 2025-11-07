@@ -23,6 +23,7 @@ const config: StorybookConfig = {
 	docs: {
 		autodocs: "tag",
 	},
+	staticDirs: ["../src/fonts"],
 	viteFinal: async (config) => {
 		// Asegurar que PostCSS y Tailwind se procesen correctamente
 		config.css = {};

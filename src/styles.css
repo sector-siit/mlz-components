@@ -4,21 +4,21 @@
 
 @font-face {
   font-family: "Geometria";
-  src: url("/fonts/Geometria-Light.woff2") format("woff2");
+  src: url("./fonts/Geometria-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Geometria";
-  src: url("/fonts/Geometria-Regular.woff2") format("woff2");
+  src: url("./fonts/Geometria-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Geometria";
-  src: url("/fonts/Geometria-Bold.woff2") format("woff2");
+  src: url("./fonts/Geometria-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: bold;
 }
