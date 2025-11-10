@@ -9,9 +9,9 @@ export interface InputProps
 	disabled?: boolean;
 	placeholder?: string;
 	fullWidth?: boolean;
-	containerProps: ContainerProp;
-	labelProps: LabelProp;
-	helperTextProps: HelperTextProp;
+	containerProps?: ContainerProp;
+	labelProps?: LabelProp;
+	helperTextProps?: HelperTextProp;
 	checkedIcon?: React.ReactNode;
 }
 
