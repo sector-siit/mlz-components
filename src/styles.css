@@ -22,6 +22,7 @@
   font-weight: 700;
   font-style: bold;
 }
+
 body {
   font-family: "Geometria", sans-serif;
 }
@@ -74,6 +75,7 @@ body {
 
   --font-geometria: "Geometria", sans-serif;
 }
+
 /* stylelint-enable */
 
 /*
@@ -85,6 +87,7 @@ body {
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -102,6 +105,7 @@ body {
     background-color: var(--mlz-primary-700, #1d4ed8);
   }
 }
+
 @utility mlz-btn-secondary {
   @apply bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 text-white;
   background-color: var(--mlz-secondary-600, #475569);
@@ -110,9 +114,11 @@ body {
     background-color: var(--mlz-secondary-700, #334155);
   }
 }
+
 /* stylelint-enable */
 
 @layer utilities {
+
   /* Variables CSS por defecto para la librería */
   :root {
     /* Colores primarios */
@@ -192,5 +198,25 @@ body {
     --mlz-success-600: #16a34a;
   }
 
-  /* Clases personalizadas para componentes MLZ */
+  .mlz-label-textarea {
+    font-family: "Geometria", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+  }
+
+  .mlz-error-color {
+    color: var(--mlz-semantic-error-600, #EF284C);
+  }
+
+  .mlz-error-border {
+    border-color: var(--mlz-semantic-error-600, #EF284C);
+  }
+
+  .mlz-error-bg {
+    background-color: var(--mlz-semantic-error-600, #EF284C);
+  }
 }
