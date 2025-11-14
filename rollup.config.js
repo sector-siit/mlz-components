@@ -37,7 +37,7 @@ export default [
         },
       }),
     ],
-    external: ["react", "react-dom"],
+    external: ["react", "react-dom", "react-hot-toast"],
   },
   {
     input: "dist/index.d.ts",
