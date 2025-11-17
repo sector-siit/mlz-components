@@ -2,10 +2,14 @@
 import "./styles.css";
 
 export type { ButtonProps } from "./components/Button";
-// Exportar componentes e
 export { Button } from "./components/Button";
+
 export type { InputProps } from "./components/Input";
 export { Input } from "./components/Input";
+
+export type { TextAreaProps } from "./components/TextArea";
+export { TextArea } from "./components/TextArea";
+
 export type {
 	ToastOptions,
 	ToastProps,
@@ -23,5 +27,6 @@ export {
 	toastWarning,
 	useToast,
 } from "./components/Toast";
+
 export type { UserCardProps } from "./components/UserCard";
 export { UserCard } from "./components/UserCard";
