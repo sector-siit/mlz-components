@@ -1,11 +1,20 @@
 {
 	"name": "@sector.siit/mlz-components",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"type": "module",
 	"description": "Una librería de componentes React con Tailwind CSS y variables CSS customizables",
 	"main": "dist/index.js",
 	"module": "dist/index.esm.js",
 	"types": "dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.esm.js",
+			"require": "./dist/index.js"
+		},
+		"./dist/styles.css": "./dist/styles.css",
+		"./styles.css": "./dist/styles.css"
+	},
 	"files": [
 		"dist",
 		"README.md"
@@ -61,6 +70,7 @@
 		"react-dom": "18.2.0",
 		"react-hot-toast": "^2.6.0",
 		"rollup": "4.9.1",
+		"rollup-plugin-copy": "^3.5.0",
 		"rollup-plugin-dts": "6.1.0",
 		"rollup-plugin-postcss": "^4.0.2",
 		"storybook": "7.6.6",

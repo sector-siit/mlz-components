@@ -2,12 +2,14 @@ import { readFileSync } from "node:fs";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
+import copy from "rollup-plugin-copy";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 
 const packageJson = JSON.parse(readFileSync("./package.json", "utf8"));
 
 export default [
+  // JS + CSS bundle
   {
     input: "src/index.ts",
     output: [
@@ -26,23 +28,44 @@ export default [
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
+
+      // Extrae CSS en archivo separado
       postcss({
         config: {
-          path: "./postcss.config.js",
+          path: "./postcss.config.cjs",
         },
-        extensions: [".css"],
+        extract: "styles.css",
         minimize: true,
-        inject: {
-          insertAt: "top",
-        },
+        extensions: [".css"],
+        inject: false,
+      }),
+
+      // Copia las fuentes al dist
+      copy({
+        targets: [
+          { src: "src/fonts/*", dest: "dist/fonts" },
+        ],
       }),
     ],
-    external: ["react", "react-dom", "react-hot-toast"],
+
+    // ❗ Nada de deps dentro del bundle
+    external: [
+      ...Object.keys(packageJson.peerDependencies || {}),
+    ],
   },
+
+  // Types bundle
   {
-    input: "dist/index.d.ts",
+    input: "src/index.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
-    plugins: [dts()],
-    external: [/\.css$/],
+    plugins: [
+      dts({
+        respectExternal: true,
+      }),
+    ],
+    external: [
+      /\.css$/,
+      ...Object.keys(packageJson.peerDependencies || {}),
+    ],
   },
 ];

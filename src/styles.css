@@ -2,31 +2,6 @@
 
 @source inline("text-semantic-error-600 text-primary-600 border-semantic-error-600 border-primary-400 placeholder:text-semantic-error-600 placeholder:text-primary-400 focus:border-semantic-error-600 focus:border-primary-600 focus:ring-semantic-error-600 focus:ring-primary-600 active:border-semantic-error-600 active:border-primary-600 w-full");
 
-@font-face {
-  font-family: "Geometria";
-  src: url("./fonts/Geometria-Light.woff2") format("woff2");
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Geometria";
-  src: url("./fonts/Geometria-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Geometria";
-  src: url("./fonts/Geometria-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: bold;
-}
-
-body {
-  font-family: "Geometria", sans-serif;
-}
-
 @theme {
   --color-primary-50: var(--mlz-primary-50, #eff6ff);
   --color-primary-100: var(--mlz-primary-100, #dbeafe);
