@@ -71,6 +71,7 @@ export const Input: React.FC<InputProps> = ({
 				{...props}
 				disabled={disabled}
 				placeholder={placeholder}
+				value={value}
 				className={classes.inputStyle}
 			/>
 			{checkedIcon && (

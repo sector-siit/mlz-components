@@ -74,6 +74,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
 			</label>
 			<textarea
 				{...props}
+				value={value}
 				disabled={disabled}
 				placeholder={placeholder}
 				className={classes.textAreaStyle}
