@@ -59,13 +59,18 @@ export default [
     ],
 
     // ❗ Nada de deps dentro del bundle
-    external: [
-      ...Object.keys(packageJson.peerDependencies || {}),
-      "react",
-      "react-dom",
-      "react-hot-toast",
-      "tailwindcss",
-    ],
+    external: (id) => {
+      // Excluir todas las dependencias de React y peer dependencies
+      return (
+        id.startsWith("react") ||
+        id.startsWith("react-dom") ||
+        id === "react-hot-toast" ||
+        id === "tailwindcss" ||
+        Object.keys(packageJson.peerDependencies || {}).some(
+          (dep) => id === dep || id.startsWith(`${dep}/`)
+        )
+      );
+    },
   },
 
   // Types bundle

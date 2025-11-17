@@ -121,20 +121,6 @@ export default function RootLayout({
 }
 ```
 
-### En React / Vite
-
-```tsx
-import { Button } from '@sector.siit/mlz-components';
-
-function App() {
-  return (
-    <Button variant="primary" size="md">
-      ¡Hola Mundo!
-    </Button>
-  );
-}
-```
-
 ## 🎨 Personalización con Variables CSS
 
 La librería utiliza variables CSS que puedes sobrescribir en tu proyecto:
@@ -375,6 +361,7 @@ git push origin main     # 🚀 Publica a NPM + GitHub Release
 
 - [🛠️ Developer Guide](./docs/DEVELOPER.md) - Guía completa para desarrolladores
 - [🚀 CI/CD Documentation](./docs/CI-CD.md) - Sistema de deployments automatizados
+- [⚡ Next.js Integration Guide](./docs/NEXTJS_GUIDE.md) - Guía completa para usar en Next.js
 
 ## 👥 Contributors
 
