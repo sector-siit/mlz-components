@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { CheckCircleIcon } from "../Icons/CheckCircle";
 import { ErrorCircleIcon } from "../Icons/ErrorCircle";

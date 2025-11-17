@@ -1,3 +1,4 @@
+"use client";
 export interface SwitchProps {
 	label?: string;
 	checked?: boolean;

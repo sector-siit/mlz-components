@@ -1,3 +1,4 @@
+"use client";
 export interface UserCardProps {
 	name: string;
 	email: string;

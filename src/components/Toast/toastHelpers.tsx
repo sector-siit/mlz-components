@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import toast, { Toast as ToastType } from "react-hot-toast";
 import { CheckCircleIcon } from "../Icons/CheckCircle";

@@ -1,3 +1,4 @@
+"use client";
 import { CheckIcon } from "../Icons/Check";
 
 export interface InputProps

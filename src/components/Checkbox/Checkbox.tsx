@@ -1,3 +1,4 @@
+"use client";
 import { CheckBlueIcon } from "../Icons/CheckBlue";
 
 export interface CheckboxOption {

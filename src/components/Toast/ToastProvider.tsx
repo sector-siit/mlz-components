@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState, useCallback } from "react";
+"use client";
+
+import React, { createContext, useCallback, useContext, useState } from "react";
 import { Toast, type ToastProps, type ToastVariant } from "./Toast";
 
 interface ToastItem extends Omit<ToastProps, "onClose"> {
@@ -25,7 +27,13 @@ export const useToast = () => {
 
 interface ToastProviderProps {
 	children: React.ReactNode;
-	position?: "top-right" | "top-left" | "bottom-right" | "bottom-left" | "top-center" | "bottom-center";
+	position?:
+		| "top-right"
+		| "top-left"
+		| "bottom-right"
+		| "bottom-left"
+		| "top-center"
+		| "bottom-center";
 }
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({
@@ -71,7 +79,9 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 	};
 
 	return (
-		<ToastContext.Provider value={{ toasts, showToast, removeToast, clearToasts }}>
+		<ToastContext.Provider
+			value={{ toasts, showToast, removeToast, clearToasts }}
+		>
 			{children}
 			{toasts.length > 0 && (
 				<div
@@ -89,4 +99,3 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 		</ToastContext.Provider>
 	);
 };
-

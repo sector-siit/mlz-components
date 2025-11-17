@@ -1,3 +1,4 @@
+"use client";
 export interface TextAreaProps
 	extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
 	errorText?: string;
