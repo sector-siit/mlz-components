@@ -29,7 +29,7 @@ const switchClasses = (checked: boolean, variant: "default" | "error") => {
 		: "text-[#236999]";
 
 	return {
-		containerStyle: "flex items-center gap-2 font-geometria",
+		containerStyle: "flex items-center gap-2",
 		switchStyle: [
 			"relative flex items-center",
 			"w-[44px] h-[24px]",

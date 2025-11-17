@@ -29,7 +29,7 @@ const textAreaClasses = (hasError?: boolean, fullWidth?: boolean) => {
 
 	return {
 		containerStyle:
-			"flex flex-col relative font-geometria gap-1" + (fullWidth ? " w-full" : ""),
+			"flex flex-col relative gap-1" + (fullWidth ? " w-full" : ""),
 		labelStyle: `mlz-label-textarea block ${labelColorClass}`,
 		textAreaStyle: [
 			"disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-primary-300",

@@ -29,7 +29,7 @@ const checkboxClasses = (hasError?: boolean) => {
 	const textColorClass = hasError ? "mlz-error-color" : "text-primary-600";
 
 	return {
-		containerStyle: "flex flex-col relative font-geometria gap-1",
+		containerStyle: "flex flex-col relative gap-1",
 		labelStyle: `mlz-label-textarea block ${labelColorClass}`,
 		checkboxContainerStyle: "flex items-center gap-1",
 		checkboxStyle: [

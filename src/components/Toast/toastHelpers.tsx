@@ -1,9 +1,9 @@
 import React from "react";
 import toast, { Toast as ToastType } from "react-hot-toast";
 import { CheckCircleIcon } from "../Icons/CheckCircle";
+import { ErrorCircleIcon } from "../Icons/ErrorCircle";
 import { InfoCircleIcon } from "../Icons/InfoCircle";
 import { WarningTriangleIcon } from "../Icons/WarningTriangle";
-import { ErrorCircleIcon } from "../Icons/ErrorCircle";
 
 export type ToastVariant = "success" | "info" | "warning" | "error";
 
@@ -53,7 +53,12 @@ const toastClasses = (variant: ToastVariant) => {
 	return variants[variant];
 };
 
-const CustomToast: React.FC<{ t: ToastType; title: string; description?: string; variant?: ToastVariant }> = ({ t, title, description, variant = "info" }) => {
+const CustomToast: React.FC<{
+	t: ToastType;
+	title: string;
+	description?: string;
+	variant?: ToastVariant;
+}> = ({ t, title, description, variant = "info" }) => {
 	const classes = toastClasses(variant);
 	const IconComponent = classes.iconComponent;
 
@@ -62,11 +67,10 @@ const CustomToast: React.FC<{ t: ToastType; title: string; description?: string;
 			className={[
 				"flex items-start",
 				"w-[400px] min-h-[88px]",
-				"rounded-[8px]",
+				"rounded-lg",
 				"border border-solid",
 				"p-4",
 				"gap-4",
-				"font-geometria",
 				"shadow-[0px_3px_6px_0px_rgba(0,0,0,0.16)]",
 				classes.bg,
 				classes.border,
@@ -75,8 +79,8 @@ const CustomToast: React.FC<{ t: ToastType; title: string; description?: string;
 			<div
 				className={[
 					"flex items-center justify-center",
-					"w-[40px] h-[40px]",
-					"rounded-[8px]",
+					"w-10 h-10",
+					"rounded-lg",
 					"p-2",
 					"flex-none",
 					classes.iconBg,
@@ -124,7 +128,12 @@ const CustomToast: React.FC<{ t: ToastType; title: string; description?: string;
 	);
 };
 
-export const showToast = ({ title, description, variant = "info", duration = 5000 }: ToastOptions): string => {
+export const showToast = ({
+	title,
+	description,
+	variant = "info",
+	duration = 5000,
+}: ToastOptions): string => {
 	return toast.custom(
 		(t) => (
 			<CustomToast
@@ -137,21 +146,32 @@ export const showToast = ({ title, description, variant = "info", duration = 500
 		{
 			duration,
 			position: "top-right",
-		}
+		},
 	);
 };
 
-export const toastSuccess = (title: string, description?: string, duration?: number) =>
-	showToast({ title, description, variant: "success", duration });
+export const toastSuccess = (
+	title: string,
+	description?: string,
+	duration?: number,
+) => showToast({ title, description, variant: "success", duration });
 
-export const toastInfo = (title: string, description?: string, duration?: number) =>
-	showToast({ title, description, variant: "info", duration });
+export const toastInfo = (
+	title: string,
+	description?: string,
+	duration?: number,
+) => showToast({ title, description, variant: "info", duration });
 
-export const toastWarning = (title: string, description?: string, duration?: number) =>
-	showToast({ title, description, variant: "warning", duration });
+export const toastWarning = (
+	title: string,
+	description?: string,
+	duration?: number,
+) => showToast({ title, description, variant: "warning", duration });
 
-export const toastError = (title: string, description?: string, duration?: number) =>
-	showToast({ title, description, variant: "error", duration });
+export const toastError = (
+	title: string,
+	description?: string,
+	duration?: number,
+) => showToast({ title, description, variant: "error", duration });
 
-export { toast, Toaster } from "react-hot-toast";
-
+export { Toaster, toast } from "react-hot-toast";

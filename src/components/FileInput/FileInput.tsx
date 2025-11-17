@@ -29,7 +29,7 @@ const fileInputClasses = (hasError?: boolean) => {
 	const containerBgColor = hasError ? "bg-red-50" : "bg-[#E5F0F9]";
 
 	return {
-		containerStyle: "flex flex-col relative font-geometria gap-1",
+		containerStyle: "flex flex-col relative gap-1",
 		labelStyle: `mlz-label-textarea block ${labelColorClass}`,
 		inputContainerStyle: [
 			"flex flex-row items-center",
@@ -49,7 +49,6 @@ const fileInputClasses = (hasError?: boolean) => {
 			"disabled:opacity-50 disabled:cursor-not-allowed",
 			"transition-colors duration-200",
 			"flex-none",
-			"font-geometria",
 			"font-normal",
 			"text-base",
 			"leading-[100%]",

@@ -27,7 +27,7 @@ const inputClasses = (hasError?: boolean, fullWidth?: boolean) => {
 
 	return {
 		containerStyle:
-			"flex flex-col relative font-geometria" + (fullWidth ? " w-full" : ""),
+			"flex flex-col relative " + (fullWidth ? " w-full" : ""),
 		labelStyle: `block text-base font-bold text-${colorClass}`,
 		inputStyle: [
 			"disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-primary-300",

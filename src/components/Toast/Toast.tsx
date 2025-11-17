@@ -1,8 +1,8 @@
 import React from "react";
 import { CheckCircleIcon } from "../Icons/CheckCircle";
+import { ErrorCircleIcon } from "../Icons/ErrorCircle";
 import { InfoCircleIcon } from "../Icons/InfoCircle";
 import { WarningTriangleIcon } from "../Icons/WarningTriangle";
-import { ErrorCircleIcon } from "../Icons/ErrorCircle";
 
 export type ToastVariant = "success" | "info" | "warning" | "error";
 
@@ -52,7 +52,12 @@ const toastClasses = (variant: ToastVariant) => {
 	return variants[variant];
 };
 
-export const Toast: React.FC<ToastProps> = ({ title, description, variant = "info", onClose }) => {
+export const Toast: React.FC<ToastProps> = ({
+	title,
+	description,
+	variant = "info",
+	onClose,
+}) => {
 	const classes = toastClasses(variant);
 	const IconComponent = classes.iconComponent;
 
@@ -61,11 +66,10 @@ export const Toast: React.FC<ToastProps> = ({ title, description, variant = "inf
 			className={[
 				"flex items-start",
 				"w-[400px] min-h-[88px]",
-				"rounded-[8px]",
+				"rounded-lg",
 				"border border-solid",
 				"p-4",
 				"gap-4",
-				"font-geometria",
 				"shadow-[0px_3px_6px_0px_rgba(0,0,0,0.16)]",
 				classes.bg,
 				classes.border,
@@ -74,8 +78,8 @@ export const Toast: React.FC<ToastProps> = ({ title, description, variant = "inf
 			<div
 				className={[
 					"flex items-center justify-center",
-					"w-[40px] h-[40px]",
-					"rounded-[8px]",
+					"w-10 h-10",
+					"rounded-lg",
 					"p-2",
 					"flex-none",
 					classes.iconBg,
