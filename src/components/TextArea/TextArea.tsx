@@ -35,8 +35,7 @@ const textAreaClasses = (hasError?: boolean, fullWidth?: boolean) => {
 		textAreaStyle: [
 			"disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-primary-300",
 			"text-primary-600",
-			"block w-full border border-solid",
-			"rounded-[4px]",
+			"block w-full rounded border px-4 py-2",
 			"px-4 py-2",
 			"placeholder:text-base",
 			"focus:outline-none focus:ring-2",
