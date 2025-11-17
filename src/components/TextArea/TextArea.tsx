@@ -62,6 +62,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
 	disabled,
 	label,
 	placeholder,
+	value = '',
 	fullWidth,
 	...props
 }) => {

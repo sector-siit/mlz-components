@@ -54,6 +54,7 @@ export const Input: React.FC<InputProps> = ({
 	helperText,
 	hasError = false,
 	disabled,
+	value = '',
 	label,
 	placeholder,
 	fullWidth,
