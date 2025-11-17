@@ -40,10 +40,11 @@ export default [
         inject: false,
       }),
 
-      // Copia las fuentes al dist
+      // Copia las fuentes y variables al dist
       copy({
         targets: [
           { src: "src/fonts/*", dest: "dist/fonts" },
+          { src: "src/variables.css", dest: "dist" },
         ],
       }),
     ],

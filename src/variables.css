@@ -1,0 +1,58 @@
+/* Variables CSS de mlz-components */
+:root {
+  /* Colores primarios */
+  --mlz-primary-50: #eff6ff;
+  --mlz-primary-100: #E5F0F9;
+  --mlz-primary-200: #bfdbfe;
+  --mlz-primary-300: #94C6E5;
+  --mlz-primary-400: #5BA8D5;
+  --mlz-primary-500: #3b82f6;
+  --mlz-primary-600: #236999;
+  --mlz-primary-700: #1d4ed8;
+  --mlz-primary-800: #1e40af;
+  --mlz-primary-900: #1e3a8a;
+  --mlz-primary-950: #172554;
+
+  --mlz-semantic-info: #006EFF;
+  --mlz-semantic-error-600: #EF284C;
+  
+  /* Colores secundarios */
+  --mlz-secondary-50: #f8fafc;
+  --mlz-secondary-100: #f1f5f9;
+  --mlz-secondary-200: #e2e8f0;
+  --mlz-secondary-300: #cbd5e1;
+  --mlz-secondary-400: #94a3b8;
+  --mlz-secondary-500: #64748b;
+  --mlz-secondary-600: #475569;
+  --mlz-secondary-700: #334155;
+  --mlz-secondary-800: #1e293b;
+  --mlz-secondary-900: #0f172a;
+  --mlz-secondary-950: #020617;
+
+  /* Variables específicas para Input */
+  --mlz-input-border-color: #d1d5db;
+  --mlz-input-label-color: #374151;
+  --mlz-input-helper-color: #6b7280;
+}
+
+.mlz-label-textarea {
+  font-family: var(--font-geometria, "Geometria", sans-serif);
+  font-weight: 700;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+}
+
+.mlz-error-color {
+  color: var(--mlz-semantic-error-600, #EF284C);
+}
+
+.mlz-error-border {
+  border-color: var(--mlz-semantic-error-600, #EF284C);
+}
+
+.mlz-error-bg {
+  background-color: var(--mlz-semantic-error-600, #EF284C);
+}
