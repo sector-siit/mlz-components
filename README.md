@@ -43,6 +43,86 @@ bun add @sector.siit/mlz-components
 
 ## 🎯 Uso Básico
 
+### En React / Vite
+
+```tsx
+import { Button } from '@sector.siit/mlz-components';
+import '@sector.siit/mlz-components/styles.css';
+
+function App() {
+  return (
+    <Button variant="primary" size="md">
+      ¡Hola Mundo!
+    </Button>
+  );
+}
+```
+
+### En Next.js 13+ (App Router)
+
+Los componentes están configurados con `"use client"` y funcionan directamente en Next.js:
+
+```tsx
+// app/page.tsx
+import { Button } from '@sector.siit/mlz-components';
+import '@sector.siit/mlz-components/styles.css';
+
+export default function Home() {
+  return (
+    <main>
+      <Button variant="primary" size="md">
+        ¡Hola Mundo!
+      </Button>
+    </main>
+  );
+}
+```
+
+#### Configuración de Tailwind en Next.js
+
+Si usas Tailwind CSS en tu proyecto Next.js, asegúrate de incluir los componentes en tu `tailwind.config.js`:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@sector.siit/mlz-components/dist/**/*.{js,jsx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+#### Importar Variables CSS
+
+Para personalizar los componentes, importa el archivo de variables en tu layout principal:
+
+```tsx
+// app/layout.tsx
+import '@sector.siit/mlz-components/styles.css';
+import '@sector.siit/mlz-components/variables.css';
+import './globals.css';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="es">
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+### En React / Vite
+
 ```tsx
 import { Button } from '@sector.siit/mlz-components';
 

@@ -17,17 +17,26 @@ export default [
         file: packageJson.main,
         format: "cjs",
         sourcemap: true,
+        banner: "'use client';\n",
+        exports: "named",
       },
       {
         file: packageJson.module,
         format: "esm",
         sourcemap: true,
+        banner: "'use client';\n",
       },
     ],
     plugins: [
-      resolve(),
+      resolve({
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      }),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.json",
+        declaration: false,
+        declarationMap: false,
+      }),
 
       // Extrae CSS en archivo separado
       postcss({
@@ -52,6 +61,10 @@ export default [
     // ❗ Nada de deps dentro del bundle
     external: [
       ...Object.keys(packageJson.peerDependencies || {}),
+      "react",
+      "react-dom",
+      "react-hot-toast",
+      "tailwindcss",
     ],
   },
 
