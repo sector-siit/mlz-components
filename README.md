@@ -195,13 +195,13 @@ Un componente de botón versatil con múltiples variantes y tamaños.
 
 #### Props
 
-| Prop | Tipo | Default | Descripción |
-|------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'outline-solid' \| 'ghost'` | `'primary'` | Variante visual del botón |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamaño del botón |
-| `children` | `React.ReactNode` | - | Contenido del botón |
-| `disabled` | `boolean` | `false` | Estado deshabilitado |
-| `onClick` | `(event: MouseEvent) => void` | - | Función de click |
+| Prop       | Tipo                                                     | Default     | Descripción               |
+| ---------- | -------------------------------------------------------- | ----------- | ------------------------- |
+| `variant`  | `'primary' \| 'secondary' \| 'outline-solid' \| 'ghost'` | `'primary'` | Variante visual del botón |
+| `size`     | `'sm' \| 'md' \| 'lg'`                                   | `'md'`      | Tamaño del botón          |
+| `children` | `React.ReactNode`                                        | -           | Contenido del botón       |
+| `disabled` | `boolean`                                                | `false`     | Estado deshabilitado      |
+| `onClick`  | `(event: MouseEvent) => void`                            | -           | Función de click          |
 
 #### Ejemplos
 
@@ -227,14 +227,14 @@ Componente de input con validación, estados y personalización completa.
 
 #### Props
 
-| Prop | Tipo | Default | Descripción |
-|------|------|---------|-------------|
-| `variant` | `'default' \| 'error' \| 'success'` | `'default'` | Estado visual del input |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tamaño del input |
-| `label` | `string` | - | Texto del label |
-| `helperText` | `string` | - | Texto de ayuda |
-| `errorText` | `string` | - | Texto de error (sobrescribe helperText) |
-| `fullWidth` | `boolean` | `false` | Si el input ocupa todo el ancho |
+| Prop         | Tipo                                | Default     | Descripción                             |
+| ------------ | ----------------------------------- | ----------- | --------------------------------------- |
+| `variant`    | `'default' \| 'error' \| 'success'` | `'default'` | Estado visual del input                 |
+| `size`       | `'sm' \| 'md' \| 'lg'`              | `'md'`      | Tamaño del input                        |
+| `label`      | `string`                            | -           | Texto del label                         |
+| `helperText` | `string`                            | -           | Texto de ayuda                          |
+| `errorText`  | `string`                            | -           | Texto de error (sobrescribe helperText) |
+| `fullWidth`  | `boolean`                           | `false`     | Si el input ocupa todo el ancho         |
 
 #### Ejemplos
 
