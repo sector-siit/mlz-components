@@ -1,4 +1,5 @@
 "use client";
+
 import { CheckIcon } from "../Icons/Check";
 
 export interface InputProps
@@ -23,13 +24,13 @@ interface LabelProp extends React.LabelHTMLAttributes<HTMLLabelElement> {}
 interface HelperTextProp extends React.HTMLAttributes<HTMLParagraphElement> {}
 
 const inputClasses = (hasError?: boolean, fullWidth?: boolean) => {
-	const colorClass = hasError ? "semantic-error-600" : "primary-600";
-	const borderColorClass = hasError ? "semantic-error-600" : "primary-400";
-
 	return {
 		containerStyle:
 			"flex flex-col relative " + (fullWidth ? " w-full" : ""),
-		labelStyle: `block text-base font-bold text-${colorClass}`,
+	 
+		labelStyle: hasError
+			? "block text-base font-bold text-semantic-error-600"
+			: "block text-base font-bold text-primary-600",
 		inputStyle: [
 			"disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-primary-300",
 			"text-primary-600",
@@ -37,12 +38,13 @@ const inputClasses = (hasError?: boolean, fullWidth?: boolean) => {
 			"placeholder:text-base",
 			"focus:outline-none focus:ring-2",
 			"active:ring-2",
-			`border-${borderColorClass}`,
-			`placeholder:text-${borderColorClass}`,
-			`focus:border-${colorClass} focus:ring-${colorClass}`,
-			`active:border-${colorClass}`,
+			hasError
+				? "border-semantic-error-600 placeholder:text-semantic-error-600 focus:border-semantic-error-600 focus:ring-semantic-error-600 active:border-semantic-error-600"
+				: "border-primary-400 placeholder:text-primary-400 focus:border-primary-600 focus:ring-primary-600 active:border-primary-600",
 		].join(" "),
-		helperTextStyle: `mt-1 text-base text-${colorClass}`,
+		helperTextStyle: hasError
+			? "mt-1 text-base text-semantic-error-600"
+			: "mt-1 text-base text-primary-600",
 	};
 };
 
@@ -54,16 +56,25 @@ export const Input: React.FC<InputProps> = ({
 	helperText,
 	hasError = false,
 	disabled,
-	value = '',
+	value = '',  
 	label,
 	placeholder,
 	fullWidth,
 	checkedIcon,
+	autoComplete, 
+	className, 
 	...props
 }) => {
 	const classes = inputClasses(hasError, fullWidth);
+	
+	const inputValue = value ?? '';
+	
+	const finalClassName = className 
+		? `${classes.inputStyle} ${className}` 
+		: classes.inputStyle;
+	
 	return (
-		<div className={classes.containerStyle}>
+		<div {...containerProps} className={classes.containerStyle}>
 			<label {...labelProps} className={classes.labelStyle}>
 				{label}
 			</label>
@@ -71,8 +82,9 @@ export const Input: React.FC<InputProps> = ({
 				{...props}
 				disabled={disabled}
 				placeholder={placeholder}
-				value={value}
-				className={classes.inputStyle}
+				value={inputValue}
+				autoComplete={autoComplete} 
+				className={finalClassName} 
 			/>
 			{checkedIcon && (
 				<div className="absolute right-4 top-1/2 -translate-y-1/2">
