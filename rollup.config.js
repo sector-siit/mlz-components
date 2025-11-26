@@ -80,10 +80,17 @@ export default [
     plugins: [
       dts({
         respectExternal: true,
+        compilerOptions: {
+          skipLibCheck: true,
+        },
       }),
     ],
     external: [
       /\.css$/,
+      "react",
+      "react-dom",
+      "react/jsx-runtime",
+      "react-hot-toast",
       ...Object.keys(packageJson.peerDependencies || {}),
     ],
   },
