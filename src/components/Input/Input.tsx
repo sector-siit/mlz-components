@@ -56,7 +56,7 @@ export const Input: React.FC<InputProps> = ({
 	helperText,
 	hasError = false,
 	disabled,
-	value = '',  
+	value,  
 	label,
 	placeholder,
 	fullWidth,
@@ -67,11 +67,14 @@ export const Input: React.FC<InputProps> = ({
 }) => {
 	const classes = inputClasses(hasError, fullWidth);
 	
-	const inputValue = value ?? '';
-	
 	const finalClassName = className 
 		? `${classes.inputStyle} ${className}` 
 		: classes.inputStyle;
+	
+	// Only pass value prop if it's explicitly provided
+	const inputProps = value !== undefined 
+		? { value, ...props }
+		: props;
 	
 	return (
 		<div {...containerProps} className={classes.containerStyle}>
@@ -79,10 +82,9 @@ export const Input: React.FC<InputProps> = ({
 				{label}
 			</label>
 			<input
-				{...props}
+				{...inputProps}
 				disabled={disabled}
 				placeholder={placeholder}
-				value={inputValue}
 				autoComplete={autoComplete} 
 				className={finalClassName} 
 			/>
