@@ -33,7 +33,7 @@ const inputClasses = (hasError?: boolean, fullWidth?: boolean) => {
 			: "block text-base font-bold text-primary-600",
 		inputStyle: [
 			"disabled:bg-primary-100 disabled:cursor-not-allowed disabled:text-primary-300",
-			"text-primary-600",
+			"text-primary-600 h-12",
 			"block w-full rounded border px-4 py-2",
 			"placeholder:text-base",
 			"focus:outline-none focus:ring-2",
