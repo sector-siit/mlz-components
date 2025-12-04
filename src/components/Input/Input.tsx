@@ -65,7 +65,8 @@ export const Input: React.FC<InputProps> = ({
 	className, 
 	...props
 }) => {
-	const classes = inputClasses(hasError, fullWidth);
+	const isError = Boolean(errorText) || hasError;
+	const classes = inputClasses(isError, fullWidth);
 	
 	const finalClassName = className 
 		? `${classes.inputStyle} ${className}` 
