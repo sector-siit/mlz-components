@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import "./Toast.css";
 import { CheckCircleIcon } from "../Icons/CheckCircle";
 import { ErrorCircleIcon } from "../Icons/ErrorCircle";
 import { InfoCircleIcon } from "../Icons/InfoCircle";
@@ -64,11 +65,6 @@ export const Toast: React.FC<ToastProps> = ({
 
 	return (
 		<div
-			style={
-				variant === "success"
-					? { backgroundColor: "#EAF9EF" }
-					: undefined
-			}
 			className={[
 				"flex items-start",
 				"w-[400px] min-h-[88px]",
@@ -77,7 +73,7 @@ export const Toast: React.FC<ToastProps> = ({
 				"p-4",
 				"gap-4",
 				"shadow-[0px_3px_6px_0px_rgba(0,0,0,0.16)]",
-				variant !== "success" ? classes.bg : "",
+				variant === "success" ? "toast-success" : classes.bg,
 				classes.border,
 			].join(" ")}
 		>
@@ -88,10 +84,10 @@ export const Toast: React.FC<ToastProps> = ({
 					"rounded-lg",
 					"p-2",
 					"flex-none",
-					classes.iconBg,
+					variant === "success" ? "toast-icon-bg" : classes.iconBg,
 				].join(" ")}
 			>
-				<div className={classes.icon}>
+				<div className={variant === "success" ? "toast-icon" : classes.icon}>
 					<IconComponent />
 				</div>
 			</div>
@@ -102,7 +98,7 @@ export const Toast: React.FC<ToastProps> = ({
 						"text-[20px]",
 						"leading-[100%]",
 						"tracking-normal",
-						classes.text,
+						variant === "success" ? "toast-text" : classes.text,
 					].join(" ")}
 				>
 					{title}
@@ -114,7 +110,7 @@ export const Toast: React.FC<ToastProps> = ({
 							"text-[18px]",
 							"leading-[100%]",
 							"tracking-normal",
-							classes.text,
+							variant === "success" ? "toast-text" : classes.text,
 						].join(" ")}
 					>
 						{description}
