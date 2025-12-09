@@ -65,6 +65,11 @@ const CustomToast: React.FC<{
 
 	return (
 		<div
+			style={
+				variant === "success"
+					? { backgroundColor: "#EAF9EF" }
+					: undefined
+			}
 			className={[
 				"flex items-start",
 				"w-[400px] min-h-[88px]",
@@ -73,7 +78,7 @@ const CustomToast: React.FC<{
 				"p-4",
 				"gap-4",
 				"shadow-[0px_3px_6px_0px_rgba(0,0,0,0.16)]",
-				classes.bg,
+				variant !== "success" ? classes.bg : "",
 				classes.border,
 			].join(" ")}
 		>

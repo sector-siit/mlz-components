@@ -1,6 +1,6 @@
 {
 	"name": "@sector.siit/mlz-components",
-	"version": "1.0.22",
+	"version": "1.0.23",
 	"type": "module",
 	"description": "Una librería de componentes React con Tailwind CSS y variables CSS customizables",
 	"main": "dist/index.js",
