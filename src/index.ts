@@ -1,15 +1,19 @@
 // Importar estilos
 import "./styles.css";
 
+export { Toaster } from "react-hot-toast";
 export type { ButtonProps } from "./components/Button";
 export { Button } from "./components/Button";
-
 export type { InputProps } from "./components/Input";
 export { Input } from "./components/Input";
-
+export type {
+	RadioButtonGroupProps,
+	RadioButtonOption,
+	RadioButtonProps,
+} from "./components/RadioButton";
+export { RadioButton, RadioButtonGroup } from "./components/RadioButton";
 export type { TextAreaProps } from "./components/TextArea";
 export { TextArea } from "./components/TextArea";
-
 export type {
 	ToastOptions,
 	ToastProps,
@@ -18,7 +22,6 @@ export type {
 export {
 	showToast,
 	Toast,
-	Toaster,
 	ToastProvider,
 	toast,
 	toastError,
@@ -30,10 +33,3 @@ export {
 
 export type { UserCardProps } from "./components/UserCard";
 export { UserCard } from "./components/UserCard";
-
-export type {
-	RadioButtonProps,
-	RadioButtonGroupProps,
-	RadioButtonOption,
-} from "./components/RadioButton";
-export { RadioButton, RadioButtonGroup } from "./components/RadioButton";

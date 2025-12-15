@@ -18,35 +18,35 @@ export interface ToastOptions {
 const toastClasses = (variant: ToastVariant) => {
 	const variants = {
 		success: {
-			bg: "bg-[#EAF9EF]",
-			border: "border-[var(--mlz-semantic-success)]",
-			icon: "text-[var(--mlz-semantic-success)]",
-			text: "text-[var(--mlz-semantic-success)]",
-			iconBg: "bg-[#C5F5D5]",
+			bg: "mlz-toast-success-bg",
+			border: "mlz-toast-success-border",
+			icon: "mlz-toast-success-text",
+			text: "mlz-toast-success-text",
+			iconBg: "mlz-toast-success-icon-bg",
 			iconComponent: CheckCircleIcon,
 		},
 		info: {
-			bg: "bg-blue-50",
-			border: "border-[#0058CC]",
-			icon: "text-[#0058CC]",
-			text: "text-[#0058CC]",
-			iconBg: "bg-blue-100",
+			bg: "mlz-toast-info-bg",
+			border: "mlz-toast-info-border",
+			icon: "mlz-toast-info-text",
+			text: "mlz-toast-info-text",
+			iconBg: "mlz-toast-info-icon-bg",
 			iconComponent: InfoCircleIcon,
 		},
 		warning: {
-			bg: "bg-yellow-50",
-			border: "border-[#C49E0A]",
-			icon: "text-[#C49E0A]",
-			text: "text-[#C49E0A]",
-			iconBg: "bg-yellow-100",
+			bg: "mlz-toast-warning-bg",
+			border: "mlz-toast-warning-border",
+			icon: "mlz-toast-warning-text",
+			text: "mlz-toast-warning-text",
+			iconBg: "mlz-toast-warning-icon-bg",
 			iconComponent: WarningTriangleIcon,
 		},
 		error: {
-			bg: "bg-red-50",
-			border: "border-[#EF284C]",
-			icon: "text-[#EF284C]",
-			text: "text-[#EF284C]",
-			iconBg: "bg-red-100",
+			bg: "mlz-toast-error-bg",
+			border: "mlz-toast-error-border",
+			icon: "mlz-toast-error-text",
+			text: "mlz-toast-error-text",
+			iconBg: "mlz-toast-error-icon-bg",
 			iconComponent: ErrorCircleIcon,
 		},
 	};
@@ -65,54 +65,19 @@ const CustomToast: React.FC<{
 
 	return (
 		<div
-			className={[
-				"flex items-start",
-				"w-[400px] min-h-[88px]",
-				"rounded-lg",
-				"border border-solid",
-				"p-4",
-				"gap-4",
-				"shadow-[0px_3px_6px_0px_rgba(0,0,0,0.16)]",
-				classes.bg,
-				classes.border,
-			].join(" ")}
+			className={`mlz-toast-container ${classes.bg} ${classes.border}`}
 		>
-			<div
-				className={[
-					"flex items-center justify-center",
-					"w-10 h-10",
-					"rounded-lg",
-					"p-2",
-					"flex-none",
-					classes.iconBg,
-				].join(" ")}
-			>
+			<div className={`mlz-toast-icon-container ${classes.iconBg}`}>
 				<div className={classes.icon}>
 					<IconComponent />
 				</div>
 			</div>
-			<div className="flex-1 flex flex-col gap-2">
-				<div
-					className={[
-						"font-bold",
-						"text-[20px]",
-						"leading-[100%]",
-						"tracking-normal",
-						classes.text,
-					].join(" ")}
-				>
+			<div className="mlz-toast-content">
+				<div className={`mlz-toast-title ${classes.text}`}>
 					{title}
 				</div>
 				{description && (
-					<div
-						className={[
-							"font-normal",
-							"text-[18px]",
-							"leading-[100%]",
-							"tracking-normal",
-							classes.text,
-						].join(" ")}
-					>
+					<div className={`mlz-toast-description ${classes.text}`}>
 						{description}
 					</div>
 				)}
@@ -120,7 +85,7 @@ const CustomToast: React.FC<{
 			<button
 				type="button"
 				onClick={() => toast.dismiss(t.id)}
-				className="text-gray-400 hover:text-gray-600"
+				className="mlz-toast-close"
 				aria-label="Cerrar"
 			>
 				×

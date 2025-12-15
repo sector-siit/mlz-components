@@ -64,54 +64,19 @@ export const Toast: React.FC<ToastProps> = ({
 
 	return (
 		<div
-			className={[
-				"flex items-start",
-				"w-[400px] min-h-[88px]",
-				"rounded-lg",
-				"border border-solid",
-				"p-4",
-				"gap-4",
-				"shadow-[0px_3px_6px_0px_rgba(0,0,0,0.16)]",
-				classes.bg,
-				classes.border,
-			].join(" ")}
+			className={`mlz-toast-container ${classes.bg} ${classes.border}`}
 		>
-			<div
-				className={[
-					"flex items-center justify-center",
-					"w-10 h-10",
-					"rounded-lg",
-					"p-2",
-					"flex-none",
-					classes.iconBg,
-				].join(" ")}
-			>
+			<div className={`mlz-toast-icon-container ${classes.iconBg}`}>
 				<div className={classes.icon}>
 					<IconComponent />
 				</div>
 			</div>
-			<div className="flex-1 flex flex-col gap-2">
-				<div
-					className={[
-						"font-bold",
-						"text-[20px]",
-						"leading-[100%]",
-						"tracking-normal",
-						classes.text,
-					].join(" ")}
-				>
+			<div className="mlz-toast-content">
+				<div className={`mlz-toast-title ${classes.text}`}>
 					{title}
 				</div>
 				{description && (
-					<div
-						className={[
-							"font-normal",
-							"text-[18px]",
-							"leading-[100%]",
-							"tracking-normal",
-							classes.text,
-						].join(" ")}
-					>
+					<div className={`mlz-toast-description ${classes.text}`}>
 						{description}
 					</div>
 				)}
@@ -120,7 +85,7 @@ export const Toast: React.FC<ToastProps> = ({
 				<button
 					type="button"
 					onClick={onClose}
-					className="text-gray-400 hover:text-gray-600"
+					className="mlz-toast-close"
 					aria-label="Cerrar"
 				>
 					×

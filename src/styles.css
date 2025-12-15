@@ -229,4 +229,63 @@
   .mlz-toast-error-icon-bg {
     background-color: #fee2e2;
   }
+
+  .mlz-toast-container {
+    display: flex;
+    align-items: flex-start;
+    width: 400px;
+    min-height: 88px;
+    border-radius: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    padding: 1rem;
+    gap: 1rem;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  }
+
+  .mlz-toast-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .mlz-toast-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mlz-toast-title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: normal;
+  }
+
+  .mlz-toast-description {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: normal;
+  }
+
+  .mlz-toast-close {
+    color: #9ca3af;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .mlz-toast-close:hover {
+    color: #4b5563;
+  }
 }
