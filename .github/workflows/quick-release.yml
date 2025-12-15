@@ -10,6 +10,7 @@ on:
       - "LICENSE"
       - "docs/**"
       - ".github/workflows/quick-release.yml"
+      - "src/**"
 
 jobs:
   quick-release:
