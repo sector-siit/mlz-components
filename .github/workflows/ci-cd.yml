@@ -41,29 +41,6 @@ jobs:
     needs: build-and-test
     uses: ./.github/workflows/deploy-storybook.yml
 
-  # Publish to NPM solo en main si la versión cambió
-  publish-npm:
-    name: 📦 Publish to NPM
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: build-and-test
-    uses: ./.github/workflows/publish-npm.yml
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-  # Create release solo en main después de publicar
-  create-release:
-    name: 🚀 Create Release
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: [build-and-test, publish-npm]
-    uses: ./.github/workflows/create-release.yml
-
-  # Update contributors solo en main después de todo
-  update-contributors:
-    name: 👥 Update Contributors
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    needs: [build-and-test, deploy-storybook, publish-npm, create-release]
-    uses: ./.github/workflows/update-contributors.yml
-
   # Update badges en todos los casos
   update-badges:
     name: 🏷️ Update Badges
