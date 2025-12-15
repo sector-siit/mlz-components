@@ -1,12 +1,10 @@
 @import 'tailwindcss';
 
-@source inline("text-semantic-error-600 text-primary-600 border-semantic-error-600 border-primary-400 placeholder:text-semantic-error-600 placeholder:text-primary-400 focus:border-semantic-error-600 focus:border-primary-600 focus:ring-semantic-error-600 focus:ring-primary-600 active:border-semantic-error-600 active:border-primary-600 w-full");
-
 @theme {
   --color-primary-50: var(--mlz-primary-50, #eff6ff);
-  --color-primary-100: var(--mlz-primary-100, #dbeafe);
+  --color-primary-100: var(--mlz-primary-100, #E5F0F9);
   --color-primary-200: var(--mlz-primary-200, #bfdbfe);
-  --color-primary-300: var(--mlz-primary-300, #93c5fd);
+  --color-primary-300: var(--mlz-primary-300, #94C6E5);
   --color-primary-400: var(--mlz-primary-400, #5BA8D5);
   --color-primary-500: var(--mlz-primary-500, #3b82f6);
   --color-primary-600: var(--mlz-primary-600, #236999);
@@ -49,49 +47,7 @@
   --text-mlz-xl: var(--mlz-font-size-xl, 1.25rem);
 }
 
-/* stylelint-enable */
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
-}
-
-@utility mlz-btn-primary {
-  @apply bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 text-white;
-  background-color: var(--mlz-primary-600, #2563eb);
-
-  &:hover {
-    background-color: var(--mlz-primary-700, #1d4ed8);
-  }
-}
-
-@utility mlz-btn-secondary {
-  @apply bg-gray-600 hover:bg-gray-700 focus:ring-gray-500 text-white;
-  background-color: var(--mlz-secondary-600, #475569);
-
-  &:hover {
-    background-color: var(--mlz-secondary-700, #334155);
-  }
-}
-
-/* stylelint-enable */
-
 @layer utilities {
-
   /* Variables CSS por defecto para la librería */
   :root {
     /* Colores primarios */
@@ -109,6 +65,7 @@
 
     --mlz-semantic-info: #006EFF;
     --mlz-semantic-error-600: #EF284C;
+    
     /* Colores secundarios */
     --mlz-secondary-50: #f8fafc;
     --mlz-secondary-100: #f1f5f9;
@@ -169,6 +126,24 @@
     --mlz-error-600: #dc2626;
     --mlz-success-500: #22c55e;
     --mlz-success-600: #16a34a;
+  }
+
+  .mlz-btn-primary {
+    background-color: var(--mlz-primary-600, #236999);
+    color: white;
+    
+    &:hover {
+      background-color: var(--mlz-primary-700, #1d4ed8);
+    }
+  }
+
+  .mlz-btn-secondary {
+    background-color: var(--mlz-secondary-600, #475569);
+    color: white;
+    
+    &:hover {
+      background-color: var(--mlz-secondary-700, #334155);
+    }
   }
 
   .mlz-label-textarea {
