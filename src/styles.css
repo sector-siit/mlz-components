@@ -164,4 +164,69 @@
   .mlz-error-bg {
     background-color: var(--mlz-semantic-error-600, #EF284C);
   }
+
+  /* Toast Variants */
+  .mlz-toast-success-bg {
+    background-color: #EAF9EF;
+  }
+
+  .mlz-toast-success-border {
+    border-color: var(--mlz-semantic-success, #22c55e);
+  }
+
+  .mlz-toast-success-text {
+    color: var(--mlz-semantic-success, #22c55e);
+  }
+
+  .mlz-toast-success-icon-bg {
+    background-color: #C5F5D5;
+  }
+
+  .mlz-toast-info-bg {
+    background-color: #eff6ff;
+  }
+
+  .mlz-toast-info-border {
+    border-color: #0058CC;
+  }
+
+  .mlz-toast-info-text {
+    color: #0058CC;
+  }
+
+  .mlz-toast-info-icon-bg {
+    background-color: #dbeafe;
+  }
+
+  .mlz-toast-warning-bg {
+    background-color: #fefce8;
+  }
+
+  .mlz-toast-warning-border {
+    border-color: #C49E0A;
+  }
+
+  .mlz-toast-warning-text {
+    color: #C49E0A;
+  }
+
+  .mlz-toast-warning-icon-bg {
+    background-color: #fef9c3;
+  }
+
+  .mlz-toast-error-bg {
+    background-color: #fef2f2;
+  }
+
+  .mlz-toast-error-border {
+    border-color: #EF284C;
+  }
+
+  .mlz-toast-error-text {
+    color: #EF284C;
+  }
+
+  .mlz-toast-error-icon-bg {
+    background-color: #fee2e2;
+  }
 }
