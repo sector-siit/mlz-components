@@ -78,9 +78,46 @@ export default function Home() {
 }
 ```
 
-#### Configuración de Tailwind en Next.js
+#### Configuración de Estilos en Next.js
 
-Si usas Tailwind CSS en tu proyecto Next.js, asegúrate de incluir los componentes en tu `tailwind.config.js`:
+##### Opción 1: Con Tailwind v4 y Tokens de Color (Recomendado)
+
+Si usas **Tailwind CSS v4**, configura tu `app/globals.css` de esta forma para obtener autocompletado de clases como `bg-primary-600`, `text-semantic-error-600`:
+
+```css
+/* app/globals.css */
+@import "tailwindcss";
+
+@theme {
+  @import "@sector.siit/mlz-components/theme.css";
+}
+
+@import "@sector.siit/mlz-components/styles.css";
+```
+
+Esto te permite usar las clases de color personalizadas de mlz-components:
+
+```tsx
+<div className="bg-primary-600 text-white">
+  <p className="text-semantic-error-600">Error</p>
+</div>
+```
+
+##### Opción 2: Solo Estilos (Sin Tokens de Tailwind)
+
+Si solo necesitas que los componentes funcionen sin las clases personalizadas:
+
+```css
+/* app/globals.css */
+@import "tailwindcss";
+@import "@sector.siit/mlz-components/styles.css";
+```
+
+Los componentes funcionarán perfectamente, pero no tendrás autocompletado para clases como `bg-primary-600`.
+
+##### Opción 3: Tailwind v3 o anterior
+
+Si usas **Tailwind CSS v3**, necesitas incluir los componentes en tu `tailwind.config.js`:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -98,14 +135,11 @@ module.exports = {
 }
 ```
 
-#### Importar Variables CSS
-
-Para personalizar los componentes, importa el archivo de variables en tu layout principal:
+Y en tu layout:
 
 ```tsx
 // app/layout.tsx
 import '@sector.siit/mlz-components/styles.css';
-import '@sector.siit/mlz-components/variables.css';
 import './globals.css';
 
 export default function RootLayout({

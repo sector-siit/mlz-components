@@ -53,7 +53,6 @@ export default [
       copy({
         targets: [
           { src: "src/fonts/*", dest: "dist/fonts" },
-          { src: "src/variables.css", dest: "dist" },
           { src: "src/theme.css", dest: "dist" },
         ],
       }),
