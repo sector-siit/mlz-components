@@ -85,7 +85,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sector-siit/mlz-components.git"
+		"url": "git+https://github.com/sector-siit/mlz-components.git"
 	},
 	"homepage": "https://sector-siit.github.io/mlz-components",
 	"bugs": {
