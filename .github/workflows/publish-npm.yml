@@ -5,6 +5,9 @@ on:
     secrets:
       NPM_TOKEN:
         required: true
+permissions:
+  contents: write # Needed for creating tags and releases
+  id-token: write # Required for OIDC trusted publishing
 
 jobs:
   publish-npm:
@@ -56,9 +59,7 @@ jobs:
         if: steps.check.outputs.version_changed == 'true'
         run: |
           echo "🚀 Publishing version ${{ steps.check.outputs.package_version }} to NPM..."
-          npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          npm publish
 
       - name: Skip message
         if: steps.check.outputs.version_changed == 'false'
