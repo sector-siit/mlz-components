@@ -1,6 +1,6 @@
 {
 	"name": "@sector.siit/mlz-components",
-	"version": "1.0.29",
+	"version": "1.0.30",
 	"type": "module",
 	"description": "Una librería de componentes React con Tailwind CSS y variables CSS customizables",
 	"main": "dist/index.js",
@@ -14,7 +14,9 @@
 		},
 		"./styles.css": "./dist/styles.css",
 		"./variables.css": "./dist/variables.css",
-		"./dist/variables.css": "./dist/variables.css"
+		"./theme.css": "./dist/theme.css",
+		"./dist/variables.css": "./dist/variables.css",
+		"./dist/theme.css": "./dist/theme.css"
 	},
 	"sideEffects": [
 		"*.css"
