@@ -87,7 +87,7 @@ const CustomToast: React.FC<{
 			{showCloseButton && (
 				<button
 					type="button"
-					onClick={() => toast.dismiss(t.id)}
+					onClick={() => toast.remove(t.id)}
 					className="mlz-toast-close"
 					aria-label="Cerrar"
 				>
