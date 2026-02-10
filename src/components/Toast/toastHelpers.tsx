@@ -13,6 +13,7 @@ export interface ToastOptions {
 	description?: string;
 	variant?: ToastVariant;
 	duration?: number;
+	showCloseButton?: boolean;
 }
 
 const toastClasses = (variant: ToastVariant) => {
@@ -59,7 +60,8 @@ const CustomToast: React.FC<{
 	title: string;
 	description?: string;
 	variant?: ToastVariant;
-}> = ({ t, title, description, variant = "info" }) => {
+	showCloseButton?: boolean;
+}> = ({ t, title, description, variant = "info", showCloseButton = true }) => {
 	const classes = toastClasses(variant);
 	const IconComponent = classes.iconComponent;
 
@@ -82,14 +84,16 @@ const CustomToast: React.FC<{
 					</div>
 				)}
 			</div>
-			<button
-				type="button"
-				onClick={() => toast.dismiss(t.id)}
-				className="mlz-toast-close"
-				aria-label="Cerrar"
-			>
-				×
-			</button>
+			{showCloseButton && (
+				<button
+					type="button"
+					onClick={() => toast.dismiss(t.id)}
+					className="mlz-toast-close"
+					aria-label="Cerrar"
+				>
+					×
+				</button>
+			)}
 		</div>
 	);
 };
@@ -99,6 +103,7 @@ export const showToast = ({
 	description,
 	variant = "info",
 	duration = 5000,
+	showCloseButton = true,
 }: ToastOptions): string => {
 	return toast.custom(
 		(t) => (
@@ -107,6 +112,7 @@ export const showToast = ({
 				title={title}
 				description={description}
 				variant={variant}
+				showCloseButton={showCloseButton}
 			/>
 		),
 		{

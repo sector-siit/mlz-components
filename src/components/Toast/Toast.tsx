@@ -11,7 +11,8 @@ export interface ToastProps {
 	title: string;
 	description?: string;
 	variant?: ToastVariant;
-	onClose?: () => void;
+	onClose: () => void;
+	showCloseButton?: boolean;
 }
 
 const toastClasses = (variant: ToastVariant) => {
@@ -58,6 +59,7 @@ export const Toast: React.FC<ToastProps> = ({
 	description,
 	variant = "info",
 	onClose,
+	showCloseButton = true,
 }) => {
 	const classes = toastClasses(variant);
 	const IconComponent = classes.iconComponent;
@@ -81,7 +83,7 @@ export const Toast: React.FC<ToastProps> = ({
 					</div>
 				)}
 			</div>
-			{onClose && (
+			{showCloseButton && onClose && (
 				<button
 					type="button"
 					onClick={onClose}

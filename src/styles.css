@@ -6,37 +6,180 @@
 
 /* Variables CSS por defecto para la librería */
 :root {
-  /* Colores primarios */
-  --mlz-primary-50: #eff6ff;
-  --mlz-primary-100: #E5F0F9;
-  --mlz-primary-200: #bfdbfe;
-  --mlz-primary-300: #94C6E5;
-  --mlz-primary-400: #5BA8D5;
-  --mlz-primary-500: #3b82f6;
-  --mlz-primary-600: #236999;
-  --mlz-primary-700: #1d4ed8;
-  --mlz-primary-800: #1e40af;
-  --mlz-primary-900: #1e3a8a;
-  --mlz-primary-950: #172554;
+  /* ========================================
+     NEUTRAL
+     ======================================== */
+  --neutral-black-950: #000000;
+  --neutral-grey-900: #3D3D3D;
+  --neutral-grey-800: #454545;
+  --neutral-grey-700: #4F4F4F;
+  --neutral-grey-600: #5D5D5D;
+  --neutral-grey-500: #6D6D6D;
+  --neutral-grey-400: #888888;
+  --neutral-grey-300: #B0B0B0;
+  --neutral-grey-200: #D1D1D1;
+  --neutral-grey-150: #DBDBDB;
+  --neutral-grey-100: #E7E7E7;
+  --neutral-grey-50: #F6F6F6;
+  --neutral-grey-25: #FAFAFA;
+  --neutral-white: #FFFFFF;
 
-  --mlz-semantic-info: #006EFF;
-  --mlz-semantic-error-600: #EF284C;
-  --mlz-semantic-success: #1D9C48;
-  
-  /* Colores secundarios */
-  --mlz-secondary-50: #f8fafc;
-  --mlz-secondary-100: #f1f5f9;
-  --mlz-secondary-200: #e2e8f0;
-  --mlz-secondary-300: #cbd5e1;
-  --mlz-secondary-400: #94a3b8;
-  --mlz-secondary-500: #64748b;
-  --mlz-secondary-600: #475569;
-  --mlz-secondary-700: #334155;
-  --mlz-secondary-800: #1e293b;
-  --mlz-secondary-900: #0f172a;
-  --mlz-secondary-950: #020617;
+  /* ========================================
+     PRIMARY
+     ======================================== */
+  --primary-950: #142A3D;
+  --primary-900: #1E415C;
+  --primary-800: #1E4D6E;
+  --primary-700: #1F5A85;
+  --primary-600: #236999;
+  --primary-500: #358DC2;
+  --primary-400: #5BA8D5;
+  --primary-300: #94C6E5;
+  --primary-200: #C6DFF1;
+  --primary-100: #E5F0F9;
+  --primary-50: #F3F7FC;
 
-  /* Espaciado */
+  /* ========================================
+     SEMANTIC - ERROR
+     ======================================== */
+  --error-950: #500114;
+  --error-900: #8F0C2F;
+  --error-800: #A70A2F;
+  --error-700: #C80830;
+  --error-600: #EF284C;
+  --error-500: #FF344F;
+  --error-400: #FF6979;
+  --error-300: #FF9FA7;
+  --error-200: #FFCACF;
+  --error-100: #FFE2E4;
+  --error-50: #FFF0F0;
+
+  /* ========================================
+     SEMANTIC - SUCCESS
+     ======================================== */
+  --success-950: #072C15;
+  --success-900: #17502C;
+  --success-800: #1A6133;
+  --success-700: #1A7B3B;
+  --success-600: #1D9C48;
+  --success-500: #2ABB5B;
+  --success-400: #52D67E;
+  --success-300: #8BEAAA;
+  --success-200: #BEF4CF;
+  --success-100: #DEFAE7;
+  --success-50: #F1FCF4;
+
+  /* ========================================
+     SEMANTIC - ALERT (WARNING)
+     ======================================== */
+  --alert-950: #C35B00;
+  --alert-900: #F57F17;
+  --alert-800: #F9A825;
+  --alert-700: #FBC02D;
+  --alert-600: #FDD835;
+  --alert-500: #FFEB3B;
+  --alert-400: #FFEE58;
+  --alert-300: #FFF176;
+  --alert-200: #FFF59D;
+  --alert-100: #FFF9C4;
+  --alert-50: #FFFDE7;
+
+  /* ========================================
+     SEMANTIC - INFO
+     ======================================== */
+  --info-950: #001633;
+  --info-900: #00214C;
+  --info-800: #002C66;
+  --info-700: #00377F;
+  --info-600: #0058CC;
+  --info-500: #006EFF;
+  --info-400: #338BFF;
+  --info-300: #66A8FF;
+  --info-200: #99C5FF;
+  --info-100: #CCE2FF;
+  --info-50: #E5F0FF;
+
+  /* ========================================
+     BRAND
+     ======================================== */
+  --brand-lomas-limpia: #0E6CB4;
+
+  /* ========================================
+     ACCENT
+     ======================================== */
+  --accent-orange: #FF9900;
+  --accent-blue: #1A73E8;
+
+  /* ========================================
+     LINK
+     ======================================== */
+  --link: #1A73E8;
+  --link-alt: #5F1EB4;
+
+  /* ========================================
+     AUXILIARS
+     ======================================== */
+  --aux-red: #FF775C;
+  --aux-orange: #FFB856;
+  --aux-sky: #5BC0FF;
+  --aux-green: #03B899;
+  --aux-violet: #9747FF;
+  --aux-pink: #FF71BF;
+
+  /* ========================================
+     AUXILIARS - NEW
+     ======================================== */
+  --aux-new-coral: #F44336;
+  --aux-new-pink-strong: #E91E63;
+  --aux-new-purple: #C92AE4;
+  --aux-new-indigo: #3F51B5;
+  --aux-new-sky: #03A9F4;
+  --aux-new-teal: #009688;
+  --aux-new-lime: #8BC34A;
+  --aux-new-yellow: #FFC107;
+  --aux-new-orange: #FF9800;
+  --aux-new-orange-red: #F44336;
+  --aux-new-pink-soft: #FF71BF;
+
+  /* ========================================
+     LEGACY ALIASES (para compatibilidad)
+     ======================================== */
+  --mlz-primary-50: var(--primary-50);
+  --mlz-primary-100: var(--primary-100);
+  --mlz-primary-200: var(--primary-200);
+  --mlz-primary-300: var(--primary-300);
+  --mlz-primary-400: var(--primary-400);
+  --mlz-primary-500: var(--primary-500);
+  --mlz-primary-600: var(--primary-600);
+  --mlz-primary-700: var(--primary-700);
+  --mlz-primary-800: var(--primary-800);
+  --mlz-primary-900: var(--primary-900);
+  --mlz-primary-950: var(--primary-950);
+
+  --mlz-semantic-info: var(--info-500);
+  --mlz-semantic-error-600: var(--error-600);
+  --mlz-semantic-success: var(--success-600);
+
+  --mlz-secondary-50: var(--neutral-grey-50);
+  --mlz-secondary-100: var(--neutral-grey-100);
+  --mlz-secondary-200: var(--neutral-grey-200);
+  --mlz-secondary-300: var(--neutral-grey-300);
+  --mlz-secondary-400: var(--neutral-grey-400);
+  --mlz-secondary-500: var(--neutral-grey-500);
+  --mlz-secondary-600: var(--neutral-grey-600);
+  --mlz-secondary-700: var(--neutral-grey-700);
+  --mlz-secondary-800: var(--neutral-grey-800);
+  --mlz-secondary-900: var(--neutral-grey-900);
+  --mlz-secondary-950: var(--neutral-black-950);
+
+  --mlz-error-500: var(--error-500);
+  --mlz-error-600: var(--error-600);
+  --mlz-success-500: var(--success-500);
+  --mlz-success-600: var(--success-600);
+
+  /* ========================================
+     SPACING
+     ======================================== */
   --mlz-spacing-xs: 0.25rem;
   --mlz-spacing-sm: 0.5rem;
   --mlz-spacing-md: 1rem;
@@ -44,25 +187,30 @@
   --mlz-spacing-xl: 2rem;
   --mlz-spacing-2xl: 3rem;
 
-  /* Border radius */
+  /* ========================================
+     BORDER RADIUS
+     ======================================== */
   --mlz-border-radius-sm: 0.25rem;
   --mlz-border-radius-md: 0.375rem;
   --mlz-border-radius-lg: 0.5rem;
   --mlz-border-radius-xl: 0.75rem;
 
-  /* Font sizes */
+  /* ========================================
+     FONT SIZES
+     ======================================== */
   --mlz-font-size-xs: 0.75rem;
   --mlz-font-size-sm: 0.875rem;
   --mlz-font-size-base: 1rem;
   --mlz-font-size-lg: 1.125rem;
   --mlz-font-size-xl: 1.25rem;
 
-  /* Variables específicas para Input */
-  --mlz-input-border-color: #d1d5db;
-  --mlz-input-label-color: #374151;
-  --mlz-input-helper-color: #6b7280;
+  /* ========================================
+     INPUT VARIABLES
+     ======================================== */
+  --mlz-input-border-color: var(--neutral-grey-200);
+  --mlz-input-label-color: var(--neutral-grey-700);
+  --mlz-input-helper-color: var(--neutral-grey-500);
 
-  /* Tamaños de Input */
   --mlz-input-height-sm: 2rem;
   --mlz-input-height-md: 2.5rem;
   --mlz-input-height-lg: 3rem;
@@ -77,31 +225,25 @@
   --mlz-input-font-size-sm: 0.875rem;
   --mlz-input-font-size-md: 1rem;
   --mlz-input-font-size-lg: 1.125rem;
-
-  /* Colores de estado */
-  --mlz-error-500: #ef4444;
-  --mlz-error-600: #dc2626;
-  --mlz-success-500: #22c55e;
-  --mlz-success-600: #16a34a;
 }
 
 @layer utilities {
 
   .mlz-btn-primary {
-    background-color: var(--mlz-primary-600, #236999);
-    color: white;
+    background-color: var(--primary-600);
+    color: var(--neutral-white);
     
     &:hover {
-      background-color: var(--mlz-primary-700, #1d4ed8);
+      background-color: var(--primary-700);
     }
   }
 
   .mlz-btn-secondary {
-    background-color: var(--mlz-secondary-600, #475569);
-    color: white;
+    background-color: var(--neutral-grey-600);
+    color: var(--neutral-white);
     
     &:hover {
-      background-color: var(--mlz-secondary-700, #334155);
+      background-color: var(--neutral-grey-700);
     }
   }
 
@@ -115,82 +257,86 @@
   }
 
   .mlz-error-color {
-    color: var(--mlz-semantic-error-600, #EF284C);
+    color: var(--error-600);
   }
 
   .mlz-error-border {
-    border-color: var(--mlz-semantic-error-600, #EF284C);
+    border-color: var(--error-600);
   }
 
   .mlz-error-bg {
-    background-color: var(--mlz-semantic-error-600, #EF284C);
+    background-color: var(--error-600);
   }
 
-  /* Toast Variants */
+  /* Toast Variants - Success */
   .mlz-toast-success-bg {
-    background-color: #EAF9EF;
+    background-color: var(--success-50);
   }
 
   .mlz-toast-success-border {
-    border-color: var(--mlz-semantic-success, #22c55e);
+    border-color: var(--success-600);
   }
 
   .mlz-toast-success-text {
-    color: var(--mlz-semantic-success, #22c55e);
+    color: var(--success-600);
   }
 
   .mlz-toast-success-icon-bg {
-    background-color: #C5F5D5;
+    background-color: var(--success-100);
   }
 
+  /* Toast Variants - Info */
   .mlz-toast-info-bg {
-    background-color: #eff6ff;
+    background-color: var(--info-50);
   }
 
   .mlz-toast-info-border {
-    border-color: #0058CC;
+    border-color: var(--info-600);
   }
 
   .mlz-toast-info-text {
-    color: #0058CC;
+    color: var(--info-600);
   }
 
   .mlz-toast-info-icon-bg {
-    background-color: #dbeafe;
+    background-color: var(--info-100);
   }
 
+  /* Toast Variants - Warning */
   .mlz-toast-warning-bg {
-    background-color: #fefce8;
+    background-color: var(--alert-50);
   }
 
   .mlz-toast-warning-border {
-    border-color: #C49E0A;
+    border-color: var(--alert-950);
   }
 
   .mlz-toast-warning-text {
-    color: #C49E0A;
+    color: var(--alert-950);
   }
 
   .mlz-toast-warning-icon-bg {
-    background-color: #fef9c3;
+    background-color: var(--alert-100);
   }
 
+  /* Toast Variants - Error */
   .mlz-toast-error-bg {
-    background-color: #fef2f2;
+    background-color: var(--error-50);
   }
 
   .mlz-toast-error-border {
-    border-color: #EF284C;
+    border-color: var(--error-600);
   }
 
   .mlz-toast-error-text {
-    color: #EF284C;
+    color: var(--error-600);
   }
 
   .mlz-toast-error-icon-bg {
-    background-color: #fee2e2;
+    background-color: var(--error-100);
   }
 
+  /* Toast Container */
   .mlz-toast-container {
     display: flex;
     align-items: flex-start;
@@ -237,7 +383,7 @@
   }
 
   .mlz-toast-close {
-    color: #9ca3af;
+    color: var(--neutral-grey-400);
     background: transparent;
     border: none;
     cursor: pointer;
@@ -247,6 +393,6 @@
   }
 
   .mlz-toast-close:hover {
-    color: #4b5563;
+    color: var(--neutral-grey-600);
   }
 }

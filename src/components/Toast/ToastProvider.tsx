@@ -6,6 +6,7 @@ import { Toast, type ToastProps, type ToastVariant } from "./Toast";
 interface ToastItem extends Omit<ToastProps, "onClose"> {
 	id: string;
 	duration?: number;
+	showCloseButton?: boolean;
 }
 
 interface ToastContextType {
