@@ -52,6 +52,7 @@ export const Success: Story = {
 		title: "Propuesta enviada",
 		description: "La propuesta fue enviada con éxito.",
 		variant: "success",
+		onClose: () => {},
 	},
 };
 
@@ -60,6 +61,7 @@ export const Info: Story = {
 		title: "Info",
 		description: "Info",
 		variant: "info",
+		onClose: () => {},
 	},
 };
 
@@ -68,6 +70,7 @@ export const Warning: Story = {
 		title: "Warning",
 		description: "Warning",
 		variant: "warning",
+		onClose: () => {},
 	},
 };
 
@@ -76,6 +79,7 @@ export const Error: Story = {
 		title: "No se pudieron obtener los datos de RENAPER",
 		description: "Por favor, verificá el DNI y el sexo ingresados.",
 		variant: "error",
+		onClose: () => {},
 	},
 };
 
@@ -86,21 +90,25 @@ export const AllVariants: Story = {
 				title="Propuesta enviada"
 				description="La propuesta fue enviada con éxito."
 				variant="success"
+				onClose={() => {}}
 			/>
 			<Toast
 				title="Info"
 				description="Info"
 				variant="info"
+				onClose={() => {}}
 			/>
 			<Toast
 				title="Warning"
 				description="Warning"
 				variant="warning"
+				onClose={() => {}}
 			/>
 			<Toast
 				title="No se pudieron obtener los datos de RENAPER"
 				description="Por favor, verificá el DNI y el sexo ingresados."
 				variant="error"
+				onClose={() => {}}
 			/>
 		</div>
 	),

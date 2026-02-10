@@ -11,7 +11,7 @@ export interface ToastProps {
 	title: string;
 	description?: string;
 	variant?: ToastVariant;
-	onClose: () => void;
+	onClose?: () => void;
 	showCloseButton?: boolean;
 }
 
