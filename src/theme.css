@@ -12,36 +12,122 @@
   @import "@sector.siit/mlz-components/styles.css";
 */
 
-/* Colores primarios como theme tokens */
+/* Colores como theme tokens */
 @theme{
-  --color-primary-50: var(--mlz-primary-50, #eff6ff);
-  --color-primary-100: var(--mlz-primary-100, #E5F0F9);
-  --color-primary-200: var(--mlz-primary-200, #bfdbfe);
-  --color-primary-300: var(--mlz-primary-300, #94C6E5);
-  --color-primary-400: var(--mlz-primary-400, #5BA8D5);
-  --color-primary-500: var(--mlz-primary-500, #3b82f6);
+  /* Neutral */
+  --color-neutral-black-950: var(--mlz-neutral-black-950, #000000);
+  --color-neutral-grey-900: var(--mlz-neutral-grey-900, #3D3D3D);
+  --color-neutral-grey-800: var(--mlz-neutral-grey-800, #454545);
+  --color-neutral-grey-700: var(--mlz-neutral-grey-700, #4F4F4F);
+  --color-neutral-grey-600: var(--mlz-neutral-grey-600, #5D5D5D);
+  --color-neutral-grey-500: var(--mlz-neutral-grey-500, #6D6D6D);
+  --color-neutral-grey-400: var(--mlz-neutral-grey-400, #888888);
+  --color-neutral-grey-300: var(--mlz-neutral-grey-300, #B0B0B0);
+  --color-neutral-grey-200: var(--mlz-neutral-grey-200, #D1D1D1);
+  --color-neutral-grey-150: var(--mlz-neutral-grey-150, #DBDBDB);
+  --color-neutral-grey-100: var(--mlz-neutral-grey-100, #E7E7E7);
+  --color-neutral-grey-50: var(--mlz-neutral-grey-50, #F6F6F6);
+  --color-neutral-grey-25: var(--mlz-neutral-grey-25, #FAFAFA);
+  --color-neutral-white: var(--mlz-neutral-white, #FFFFFF);
+
+  /* Primary */
+  --color-primary-950: var(--mlz-primary-950, #142A3D);
+  --color-primary-900: var(--mlz-primary-900, #1E415C);
+  --color-primary-800: var(--mlz-primary-800, #1E4D6E);
+  --color-primary-700: var(--mlz-primary-700, #1F5A85);
   --color-primary-600: var(--mlz-primary-600, #236999);
-  --color-primary-700: var(--mlz-primary-700, #1d4ed8);
-  --color-primary-800: var(--mlz-primary-800, #1e40af);
-  --color-primary-900: var(--mlz-primary-900, #1e3a8a);
-  --color-primary-950: var(--mlz-primary-950, #172554);
+  --color-primary-500: var(--mlz-primary-500, #358DC2);
+  --color-primary-400: var(--mlz-primary-400, #5BA8D5);
+  --color-primary-300: var(--mlz-primary-300, #94C6E5);
+  --color-primary-200: var(--mlz-primary-200, #C6DFF1);
+  --color-primary-100: var(--mlz-primary-100, #E5F0F9);
+  --color-primary-50: var(--mlz-primary-50, #F3F7FC);
 
-  --color-semantic-info: var(--mlz-semantic-info, #006EFF);
-  --color-semantic-error-600: var(--mlz-semantic-error-600, #EF284C);
-  --color-semantic-success: var(--mlz-semantic-success, #1D9C48);
+  /* Semantic - Error */
+  --color-error-950: var(--mlz-error-950, #500114);
+  --color-error-900: var(--mlz-error-900, #8F0C2F);
+  --color-error-800: var(--mlz-error-800, #A70A2F);
+  --color-error-700: var(--mlz-error-700, #C80830);
+  --color-error-600: var(--mlz-error-600, #EF284C);
+  --color-error-500: var(--mlz-error-500, #FF344F);
+  --color-error-400: var(--mlz-error-400, #FF6979);
+  --color-error-300: var(--mlz-error-300, #FF9FA7);
+  --color-error-200: var(--mlz-error-200, #FFCACF);
+  --color-error-100: var(--mlz-error-100, #FFE2E4);
+  --color-error-50: var(--mlz-error-50, #FFF0F0);
 
-  --color-secondary-50: var(--mlz-secondary-50, #f8fafc);
-  --color-secondary-100: var(--mlz-secondary-100, #f1f5f9);
-  --color-secondary-200: var(--mlz-secondary-200, #e2e8f0);
-  --color-secondary-300: var(--mlz-secondary-300, #cbd5e1);
-  --color-secondary-400: var(--mlz-secondary-400, #94a3b8);
-  --color-secondary-500: var(--mlz-secondary-500, #64748b);
-  --color-secondary-600: var(--mlz-secondary-600, #475569);
-  --color-secondary-700: var(--mlz-secondary-700, #334155);
-  --color-secondary-800: var(--mlz-secondary-800, #1e293b);
-  --color-secondary-900: var(--mlz-secondary-900, #0f172a);
-  --color-secondary-950: var(--mlz-secondary-950, #020617);
+  /* Semantic - Success */
+  --color-success-950: var(--mlz-success-950, #072C15);
+  --color-success-900: var(--mlz-success-900, #17502C);
+  --color-success-800: var(--mlz-success-800, #1A6133);
+  --color-success-700: var(--mlz-success-700, #1A7B3B);
+  --color-success-600: var(--mlz-success-600, #1D9C48);
+  --color-success-500: var(--mlz-success-500, #2ABB5B);
+  --color-success-400: var(--mlz-success-400, #52D67E);
+  --color-success-300: var(--mlz-success-300, #8BEAAA);
+  --color-success-200: var(--mlz-success-200, #BEF4CF);
+  --color-success-100: var(--mlz-success-100, #DEFAE7);
+  --color-success-50: var(--mlz-success-50, #F1FCF4);
 
+  /* Semantic - Alert */
+  --color-alert-950: var(--mlz-alert-950, #C35B00);
+  --color-alert-900: var(--mlz-alert-900, #F57F17);
+  --color-alert-800: var(--mlz-alert-800, #F9A825);
+  --color-alert-700: var(--mlz-alert-700, #FBC02D);
+  --color-alert-600: var(--mlz-alert-600, #FDD835);
+  --color-alert-500: var(--mlz-alert-500, #FFEB3B);
+  --color-alert-400: var(--mlz-alert-400, #FFEE58);
+  --color-alert-300: var(--mlz-alert-300, #FFF176);
+  --color-alert-200: var(--mlz-alert-200, #FFF59D);
+  --color-alert-100: var(--mlz-alert-100, #FFF9C4);
+  --color-alert-50: var(--mlz-alert-50, #FFFDE7);
+
+  /* Semantic - Info */
+  --color-info-950: var(--mlz-info-950, #001633);
+  --color-info-900: var(--mlz-info-900, #00214C);
+  --color-info-800: var(--mlz-info-800, #002C66);
+  --color-info-700: var(--mlz-info-700, #00377F);
+  --color-info-600: var(--mlz-info-600, #0058CC);
+  --color-info-500: var(--mlz-info-500, #006EFF);
+  --color-info-400: var(--mlz-info-400, #338BFF);
+  --color-info-300: var(--mlz-info-300, #66A8FF);
+  --color-info-200: var(--mlz-info-200, #99C5FF);
+  --color-info-100: var(--mlz-info-100, #CCE2FF);
+  --color-info-50: var(--mlz-info-50, #E5F0FF);
+
+  /* Brand */
+  --color-brand-lomas-limpia: var(--mlz-brand-lomas-limpia, #0E6CB4);
+
+  /* Accent */
+  --color-accent-orange: var(--mlz-accent-orange, #FF9900);
+  --color-accent-blue: var(--mlz-accent-blue, #1A73E8);
+
+  /* Link */
+  --color-link: var(--mlz-link, #1A73E8);
+  --color-link-alt: var(--mlz-link-alt, #5F1EB4);
+
+  /* Auxiliars */
+  --color-aux-red: var(--mlz-aux-red, #FF775C);
+  --color-aux-orange: var(--mlz-aux-orange, #FFB856);
+  --color-aux-sky: var(--mlz-aux-sky, #5BC0FF);
+  --color-aux-green: var(--mlz-aux-green, #03B899);
+  --color-aux-violet: var(--mlz-aux-violet, #9747FF);
+  --color-aux-pink: var(--mlz-aux-pink, #FF71BF);
+
+  /* Auxiliars - New */
+  --color-aux-new-coral: var(--mlz-aux-new-coral, #F44336);
+  --color-aux-new-pink-strong: var(--mlz-aux-new-pink-strong, #E91E63);
+  --color-aux-new-purple: var(--mlz-aux-new-purple, #C92AE4);
+  --color-aux-new-indigo: var(--mlz-aux-new-indigo, #3F51B5);
+  --color-aux-new-sky: var(--mlz-aux-new-sky, #03A9F4);
+  --color-aux-new-teal: var(--mlz-aux-new-teal, #009688);
+  --color-aux-new-lime: var(--mlz-aux-new-lime, #8BC34A);
+  --color-aux-new-yellow: var(--mlz-aux-new-yellow, #FFC107);
+  --color-aux-new-orange: var(--mlz-aux-new-orange, #FF9800);
+  --color-aux-new-orange-red: var(--mlz-aux-new-orange-red, #F44336);
+  --color-aux-new-pink-soft: var(--mlz-aux-new-pink-soft, #FF71BF);
+
+  /* Spacing */
   --spacing-mlz-xs: var(--mlz-spacing-xs, 0.25rem);
   --spacing-mlz-sm: var(--mlz-spacing-sm, 0.5rem);
   --spacing-mlz-md: var(--mlz-spacing-md, 1rem);
@@ -49,11 +135,13 @@
   --spacing-mlz-xl: var(--mlz-spacing-xl, 2rem);
   --spacing-mlz-2xl: var(--mlz-spacing-2xl, 3rem);
 
+  /* Border Radius */
   --radius-mlz-sm: var(--mlz-border-radius-sm, 0.25rem);
   --radius-mlz-md: var(--mlz-border-radius-md, 0.375rem);
   --radius-mlz-lg: var(--mlz-border-radius-lg, 0.5rem);
   --radius-mlz-xl: var(--mlz-border-radius-xl, 0.75rem);
 
+  /* Font Sizes */
   --text-mlz-xs: var(--mlz-font-size-xs, 0.75rem);
   --text-mlz-sm: var(--mlz-font-size-sm, 0.875rem);
   --text-mlz-base: var(--mlz-font-size-base, 1rem);
