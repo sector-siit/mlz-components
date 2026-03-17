@@ -36,8 +36,8 @@ const inputClasses = (hasError?: boolean, fullWidth?: boolean) => {
 			"text-primary-600 h-12",
 			"block w-full rounded border px-4 py-2",
 			"placeholder:text-base",
-			"focus:outline-none focus:ring-2",
-			"active:ring-2",
+			"focus:outline-none focus:ring-1",
+			"active:ring-1",
 			hasError
 				? "border-semantic-error-600 placeholder:text-semantic-error-600 focus:border-semantic-error-600 focus:ring-semantic-error-600 active:border-semantic-error-600"
 				: "border-primary-400 placeholder:text-primary-400 focus:border-primary-600 focus:ring-primary-600 active:border-primary-600",
