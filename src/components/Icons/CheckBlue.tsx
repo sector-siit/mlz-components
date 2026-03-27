@@ -1,16 +1,4 @@
 export const CheckBlueIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-	<svg
-		width="14"
-		height="10"
-		viewBox="0 0 14 10"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
-		<path
-			d="M4 9.4L0 5.4L1.4 4L4 6.6L10.6 0L12 1.4L4 9.4Z"
-			fill="currentColor"
-		/>
-	</svg>
+	<svg xmlns="http://www.w3.org/2000/svg" width="14" height="10" fill="none" {...props} viewBox="0 0 14 10"><path fill="currentColor" d="m4 9.4-4-4L1.4 4 4 6.6 10.6 0 12 1.4z" /></svg>
 );
 

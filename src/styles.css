@@ -232,7 +232,7 @@
   .mlz-btn-primary {
     background-color: var(--primary-600);
     color: var(--neutral-white);
-    
+
     &:hover {
       background-color: var(--primary-700);
     }
@@ -241,7 +241,7 @@
   .mlz-btn-secondary {
     background-color: var(--neutral-grey-600);
     color: var(--neutral-white);
-    
+
     &:hover {
       background-color: var(--neutral-grey-700);
     }
@@ -270,7 +270,7 @@
 
   /* Toast Variants - Success */
   .mlz-toast-success-bg {
-    background-color: var(--success-50);
+    background-color: #EAF9EF;
   }
 
   .mlz-toast-success-border {
@@ -282,7 +282,7 @@
   }
 
   .mlz-toast-success-icon-bg {
-    background-color: var(--success-100);
+    background-color: #C5F5D5;
   }
 
   /* Toast Variants - Info */
@@ -299,24 +299,24 @@
   }
 
   .mlz-toast-info-icon-bg {
-    background-color: var(--info-100);
+    background-color: #99C5FF;
   }
 
   /* Toast Variants - Warning */
   .mlz-toast-warning-bg {
-    background-color: var(--alert-50);
+    background-color: #FDFDE9;
   }
 
   .mlz-toast-warning-border {
-    border-color: var(--alert-950);
+    border-color: #C49E0A;
   }
 
   .mlz-toast-warning-text {
-    color: var(--alert-950);
+    color: #C49E0A;
   }
 
   .mlz-toast-warning-icon-bg {
-    background-color: var(--alert-100);
+    background-color: #FAFA8E;
   }
 
   /* Toast Variants - Error */
@@ -333,7 +333,7 @@
   }
 
   .mlz-toast-error-icon-bg {
-    background-color: var(--error-100);
+    background-color: #FFCACF;
   }
 
   /* Toast Container */

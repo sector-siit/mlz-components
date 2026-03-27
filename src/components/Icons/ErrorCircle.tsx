@@ -1,19 +1,4 @@
 export const ErrorCircleIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-	<svg
-		width="20"
-		height="20"
-		viewBox="0 0 20 20"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-		{...props}
-	>
-		<circle cx="10" cy="10" r="10" fill="currentColor" />
-		<path
-			d="M7 7L13 13M13 7L7 13"
-			stroke="white"
-			strokeWidth="2"
-			strokeLinecap="round"
-		/>
-	</svg>
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" {...props} viewBox="0 0 20 20"><path fill="currentColor" d="m7.05 14.363 2.95-2.95 2.95 2.95 1.413-1.413-2.95-2.95 2.95-2.95-1.413-1.412L10 8.588l-2.95-2.95L5.638 7.05 8.588 10l-2.95 2.95zM10 20a9.7 9.7 0 0 1-3.9-.788 10.1 10.1 0 0 1-3.175-2.137Q1.575 15.725.788 13.9A9.7 9.7 0 0 1 0 10q0-2.074.788-3.9a10.1 10.1 0 0 1 2.137-3.175Q4.275 1.575 6.1.788A9.7 9.7 0 0 1 10 0q2.075 0 3.9.788a10.1 10.1 0 0 1 3.175 2.137q1.35 1.35 2.137 3.175A9.7 9.7 0 0 1 20 10a9.7 9.7 0 0 1-.788 3.9 10.1 10.1 0 0 1-2.137 3.175q-1.35 1.35-3.175 2.137A9.7 9.7 0 0 1 10 20m0-2q3.35 0 5.675-2.325T18 10t-2.325-5.675T10 2 4.325 4.325 2 10t2.325 5.675T10 18" /></svg>
 );
 
